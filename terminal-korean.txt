@@ -1,0 +1,30 @@
+'터미널 한글깨짐'
+
+제어판\시계 및 국가\국가 또는 지역
+
+관리자옵션 -> 시스템 로캘 변경 -> Beta:세계 언어 지원을 위해 unicode utf-8사용
+
+*****
+
+'git 한글깨짐'
+
+[i18n]
+	commitEncoding = utf-8
+	logOutputEncoding = utf-8
+
+[core]
+
+
+*****
+
+'커서 한글깨짐'
+
+Cursor의 상단 메뉴에서 'Help'를 클릭. 
+
+모든 명령 보기: 'Show All Command'를 선택. 
+
+언어 설정: 'Configure Display Language' 옵션을 찾아 클릭
+
+목록에서 '한국어'를 선택.   
+
+재시작: 언어 변경 후, Cursor를 재시작하여 변경 사항을 적용.

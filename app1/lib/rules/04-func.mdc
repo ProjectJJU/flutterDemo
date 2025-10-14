@@ -1,0 +1,50 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+아래의 조건 및 주의사항을 모두 적용하여 코드를 작성할 것.
+
+==============================================
+
+* [상수경로]
+    - [ENUM]: lib/core/constants/enums.dart
+    - [ROUTE]: lib/core/constants/routes.dart
+
+==============================================
+
+1. 로직 및 상태관리 조건
+    - 모든 기능 및 데이터는 해당 파일 안에서 처리하여, 다른 파일에 의존하지 않도록 구현할 것.
+    - 의미를 담고 있는 구조화된 타입은 * [상수경로]에 제공된 [ENUM]을 활용할 것.
+    - 상태관리는 최소한의 `StatefulWidget`, `ChangeNotifier`, `Provider`, 또는 `Riverpod`만 사용할 것.
+    - 불필요한 `setState` 호출이나 중복 상태 업데이트는 금지할 것.
+
+2. 페이지 이동 조건
+    - 페이지 이동은 직접 하드코딩하지 말고, * [상수경로]에 제공된 [ROUTE]를 통해서만 이동할 것.
+    - Navigator 사용 시 `Navigator.pushNamed(context, Routes.home)` 형태로만 이동할 것.
+
+3. 다이얼로그(모달) 조건
+    - Flutter의 `showDialog` 또는 `showModalBottomSheet`를 사용할 것.
+    - 이미 프로젝트에 공통 모달 위젯이 정의되어 있다면, 해당 공통 모달만 사용할 것.
+    - 모달 내에서 setState 또는 Navigator.pop 외의 외부 의존 로직은 넣지 말 것.
+
+4. 폼 및 검증 조건
+    - Flutter의 기본 `Form`과 `TextFormField`를 사용하여 폼을 구성할 것.
+    - 검증 로직은 Dart의 `FormFieldValidator` 또는 프로젝트 내 제공된 `Validator` 유틸을 사용할 것.
+    - 외부 검증 패키지(`formz`, `reactive_forms` 등) 사용 금지.
+
+5. API 조건
+    - API 호출은 반드시 프로젝트 내 공통 네트워크 유틸(`lib/core/network/`)을 사용할 것.
+    - `http`, `dio`, `graphql` 등은 이미 프로젝트에 설정된 버전만 사용할 것.
+    - 비동기 처리는 `Future`, `async/await` 패턴으로 통일할 것.
+    - API 호출 후 상태 업데이트는 `ChangeNotifier` 또는 `Riverpod` 기반 구조 내에서만 수행할 것.
+
+6. 테스트 조건
+    - 테스트는 반드시 **TDD 기반으로 `flutter_test`를 이용하여 작성**할 것.
+    - 테스트 설정 파일(`flutter_test_config.dart`)은 변경하지 말 것.
+    - 테스트는 `flutter test` 명령으로만 실행할 것.
+    - 테스트에 mock 데이터 사용하지 말고, 실제 API 또는 실제 위젯 렌더 결과를 사용할 것.
+    - 테스트 중 `Future.delayed` 기반의 timeout 방식은 피할 것.
+    - timeout 테스트가 불가피한 경우, **지연시간은 2000ms 미만으로 설정할 것.**
+    - 위젯 테스트 시, 특정 요소를 찾을 때 **Key 위젯 (e.g., `Key('login_button')`)** 을 사용하여 테스트할 것.
+    - CSS나 DOM 접근은 불가능하므로, 반드시 **Key 기반 테스트 구조를 유지**할 것.
