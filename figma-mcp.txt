@@ -1,0 +1,27 @@
+- 15일 새로 업데이트하기
+
+wsl에서 우분투 설치
+
+sudo apt install git
+
+git clone https://github.com/grab/cursor-talk-to-figma-mcp.git
+
+cd cursor-talk-to-figma-mcp
+
+sudo apt install unzip -y
+
+curl -fsSL https://bun.sh/install | bash
+
+source ~/.bashrc
+
+bun setup
+
+bun socket
+
+figma 열기 -> plugin : Cursor Talk To Figma Plugin -> connect -> copy mcp.json
+
+cursor 열기 -> ctrl + shft + P -> mcp.json -> paste clipboard
+
+
+
+
