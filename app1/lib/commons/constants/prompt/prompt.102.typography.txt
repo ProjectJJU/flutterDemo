@@ -8,11 +8,11 @@
 
 ==============================================
 
-조건-피그마) 활용할MCP: CursorTalkToFigmaMCP(채널명: ec2jcyrp)
-조건-피그마) 구현될 파운데이션 노드ID: 3459:1422
+조건-피그마) 활용할MCP: CursorTalkToFigmaMCP(채널명: mf0v7j0x)
+조건-피그마) 구현될 파운데이션 노드ID: 0:364
 
-조건-파일경로) 구현될 TS          파일경로: src/commons/constants/typography.ts
-조건-파일경로) 구현될 globals.css 파일경로: src/app/globals.css
+조건-파일경로) 구현될 dart        파일경로: lib/commons/constants/text_styles.dart
+조건-파일경로) 임포트할 패키지     package:flutter/material.dart'
 
 ==============================================
 
@@ -20,4 +20,8 @@
             - 추후 영문 typography는 다른 값을 사용할 수 있도록 셋팅할 것.
             - 모바일과 데스크톱이 분기될 수 있도록 셋팅할 것.
 
-핵심요구사항) css도 typography 토큰 변수를 사용 가능하도록 globals.css에 셋팅할 것.
+핵심요구사항) 피그마 원본 텍스트 스타일만으로 abstract class TextStyles 상수를 정의하여 전역 텍스트 스타일 체계를 구성할 것. 
+
+핵심요구사항) 따로 함수를 만들지 말 것. "피그마에 없는 텍스트 스타일들은 모두 제거하고, 피그마 원본 텍스트 스타일들만 남겨줘"
+
+
