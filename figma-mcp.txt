@@ -1,34 +1,28 @@
-- 15일 새로 업데이트하기
+1. git 설치
 
-wsl에서 우분투 설치
+git clone https://github.com/sonnylazuardi/cursor-talk-to-figma-mcp.git
 
-sudo apt install git
+2. powershell 켜기
+iwr https://bun.sh/install.ps1 -useb | iex
 
-cd workspace
-
-git clone https://github.com/grab/cursor-talk-to-figma-mcp.git
-
+3. powershell에서 cursor-talk-to-figma-mcp 폴더로 이동
 cd cursor-talk-to-figma-mcp
+bun install
+bunx cursor-talk-to-figma-socket
 
-sudo apt install unzip -y
+혹은 bunx cursor-talk-to-figma-mcp
 
-curl -fsSL https://bun.sh/install | bash
+4. figma 열기 
+plugin : Cursor Talk To Figma Plugin -> connect -> copy mcp.json
 
-source ~/.bashrc
-
-bun setup
-
-bun socket
-
-figma 열기 -> plugin : Cursor Talk To Figma Plugin -> connect -> copy mcp.json
-
-cursor 열기 -> ctrl + shft + P -> mcp.json -> paste clipboard
+5. cursor 열기 
+ctrl + shft + P -> mcp.json -> paste clipboard
 
 
 **** 재실행시 
-cd workspace/cursor-talk-to-figma-mcp
+cd cursor-talk-to-figma-mcp
 
-bun socket
+bunx cursor-talk-to-figma-socket
 
 
 
