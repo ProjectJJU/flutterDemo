@@ -216,12 +216,8 @@ class _ToggleState extends State<Toggle> with TickerProviderStateMixin {
       widget.label!,
       style: _getLabelTextStyle().copyWith(
         color: isDisabled 
-          ? (widget.theme == ToggleStyles.dark 
-              ? ColorStyles.gray50 
-              : ColorStyles.gray50)
-          : (widget.theme == ToggleStyles.dark 
-              ? ColorStyles.white 
-              : ColorStyles.gray80),
+          ? ColorStyles.gray50
+          : ColorStyles.black,
       ),
     );
   }

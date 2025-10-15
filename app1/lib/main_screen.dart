@@ -6,6 +6,7 @@ import 'commons/constants/text_styles.dart';
 import 'commons/components/searchbar/searchbar_export.dart' as searchbar;
 import 'commons/components/input/input_export.dart' as input;
 import 'commons/components/toggle/toggle_export.dart' as toggle;
+import 'commons/components/selectbox/selectbox_export.dart' as selectbox;
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -46,6 +47,17 @@ class _MainScreenState extends State<MainScreen> with FlutterQueryMixin {
   bool _largeToggle = false;
   bool _disabledToggle = false;
   bool _withLabelToggle = false;
+  
+  // SelectBox 데모용 상태들
+  String? _selectBoxValue = '전체';
+  String? _selectBoxPrimaryValue = 'option1';
+  String? _selectBoxSecondaryValue = 'option1';
+  String? _selectBoxTertiaryValue = 'option1';
+  String? _selectBoxSmallValue = 'small1';
+  String? _selectBoxMediumValue = 'medium1';
+  String? _selectBoxLargeValue = 'large1';
+  String? _selectBoxErrorValue = 'error1';
+  String? _selectBoxDisabledValue = 'disabled1';
   
   // 검색 결과 상태
   String _searchResult = '';
@@ -640,6 +652,187 @@ class _MainScreenState extends State<MainScreen> with FlutterQueryMixin {
                             labelPosition: 'leading',
                           ),
                         ],
+                      ),
+                      const SizedBox(height: 24),
+                      
+                      // ============================================================================
+                      // 9. SelectBox 컴포넌트 데모
+                      // ============================================================================
+                      
+                      _buildSectionTitle('9. SelectBox 컴포넌트 데모'),
+                      const SizedBox(height: 12),
+                      
+                      // Basic SelectBox
+                      selectbox.SelectBox<String>(
+                        value: _selectBoxValue,
+                        onChanged: (value) {
+                          setState(() {
+                            _selectBoxValue = value;
+                          });
+                        },
+                        items: const [
+                          selectbox.SelectBoxItem(value: '전체', label: '전체'),
+                          selectbox.SelectBoxItem(value: '행복해요', label: '행복해요'),
+                          selectbox.SelectBoxItem(value: '슬퍼요', label: '슬퍼요'),
+                          selectbox.SelectBoxItem(value: '놀랐어요', label: '놀랐어요'),
+                          selectbox.SelectBoxItem(value: '화나요', label: '화나요'),
+                          selectbox.SelectBoxItem(value: '기타', label: '기타'),
+                        ],
+                        hintText: '감정을 선택하세요',
+                        label: '감정 선택',
+                        isRequired: true,
+                      ),
+                      const SizedBox(height: 16),
+                      
+                      // SelectBox Variant 데모
+                      _buildSectionTitle('9-1. SelectBox Variant 데모'),
+                      const SizedBox(height: 12),
+                      
+                      // Primary
+                      selectbox.SelectBox<String>(
+                        value: _selectBoxPrimaryValue,
+                        onChanged: (value) {
+                          setState(() {
+                            _selectBoxPrimaryValue = value;
+                          });
+                        },
+                        items: const [
+                          selectbox.SelectBoxItem(value: 'option1', label: '옵션 1'),
+                          selectbox.SelectBoxItem(value: 'option2', label: '옵션 2'),
+                          selectbox.SelectBoxItem(value: 'option3', label: '옵션 3'),
+                        ],
+                        variant: selectbox.SelectBoxVariant.primary,
+                        hintText: 'Primary SelectBox',
+                      ),
+                      const SizedBox(height: 16),
+                      
+                      // Secondary
+                      selectbox.SelectBox<String>(
+                        value: _selectBoxSecondaryValue,
+                        onChanged: (value) {
+                          setState(() {
+                            _selectBoxSecondaryValue = value;
+                          });
+                        },
+                        items: const [
+                          selectbox.SelectBoxItem(value: 'option1', label: '옵션 1'),
+                          selectbox.SelectBoxItem(value: 'option2', label: '옵션 2'),
+                          selectbox.SelectBoxItem(value: 'option3', label: '옵션 3'),
+                        ],
+                        variant: selectbox.SelectBoxVariant.secondary,
+                        hintText: 'Secondary SelectBox',
+                      ),
+                      const SizedBox(height: 16),
+                      
+                      // Tertiary
+                      selectbox.SelectBox<String>(
+                        value: _selectBoxTertiaryValue,
+                        onChanged: (value) {
+                          setState(() {
+                            _selectBoxTertiaryValue = value;
+                          });
+                        },
+                        items: const [
+                          selectbox.SelectBoxItem(value: 'option1', label: '옵션 1'),
+                          selectbox.SelectBoxItem(value: 'option2', label: '옵션 2'),
+                          selectbox.SelectBoxItem(value: 'option3', label: '옵션 3'),
+                        ],
+                        variant: selectbox.SelectBoxVariant.tertiary,
+                        hintText: 'Tertiary SelectBox',
+                      ),
+                      const SizedBox(height: 24),
+                      
+                      // SelectBox Size 데모
+                      _buildSectionTitle('9-2. SelectBox Size 데모'),
+                      const SizedBox(height: 12),
+                      
+                      // Small
+                      selectbox.SelectBox<String>(
+                        value: _selectBoxSmallValue,
+                        onChanged: (value) {
+                          setState(() {
+                            _selectBoxSmallValue = value;
+                          });
+                        },
+                        items: const [
+                          selectbox.SelectBoxItem(value: 'small1', label: 'Small 옵션 1'),
+                          selectbox.SelectBoxItem(value: 'small2', label: 'Small 옵션 2'),
+                        ],
+                        size: selectbox.SelectBoxSize.small,
+                        hintText: 'Small SelectBox',
+                      ),
+                      const SizedBox(height: 16),
+                      
+                      // Medium
+                      selectbox.SelectBox<String>(
+                        value: _selectBoxMediumValue,
+                        onChanged: (value) {
+                          setState(() {
+                            _selectBoxMediumValue = value;
+                          });
+                        },
+                        items: const [
+                          selectbox.SelectBoxItem(value: 'medium1', label: 'Medium 옵션 1'),
+                          selectbox.SelectBoxItem(value: 'medium2', label: 'Medium 옵션 2'),
+                        ],
+                        size: selectbox.SelectBoxSize.medium,
+                        hintText: 'Medium SelectBox',
+                      ),
+                      const SizedBox(height: 16),
+                      
+                      // Large
+                      selectbox.SelectBox<String>(
+                        value: _selectBoxLargeValue,
+                        onChanged: (value) {
+                          setState(() {
+                            _selectBoxLargeValue = value;
+                          });
+                        },
+                        items: const [
+                          selectbox.SelectBoxItem(value: 'large1', label: 'Large 옵션 1'),
+                          selectbox.SelectBoxItem(value: 'large2', label: 'Large 옵션 2'),
+                        ],
+                        size: selectbox.SelectBoxSize.large,
+                        hintText: 'Large SelectBox',
+                      ),
+                      const SizedBox(height: 24),
+                      
+                      // SelectBox 상태 데모
+                      _buildSectionTitle('9-3. SelectBox 상태 데모'),
+                      const SizedBox(height: 12),
+                      
+                      // Error
+                      selectbox.SelectBox<String>(
+                        value: _selectBoxErrorValue,
+                        onChanged: (value) {
+                          setState(() {
+                            _selectBoxErrorValue = value;
+                          });
+                        },
+                        items: const [
+                          selectbox.SelectBoxItem(value: 'error1', label: '에러 옵션 1'),
+                          selectbox.SelectBoxItem(value: 'error2', label: '에러 옵션 2'),
+                        ],
+                        isError: true,
+                        errorText: '필수 선택 항목입니다',
+                        hintText: 'Error SelectBox',
+                      ),
+                      const SizedBox(height: 16),
+                      
+                      // Disabled
+                      selectbox.SelectBox<String>(
+                        value: _selectBoxDisabledValue,
+                        onChanged: (value) {
+                          setState(() {
+                            _selectBoxDisabledValue = value;
+                          });
+                        },
+                        items: const [
+                          selectbox.SelectBoxItem(value: 'disabled1', label: '비활성 옵션 1'),
+                          selectbox.SelectBoxItem(value: 'disabled2', label: '비활성 옵션 2'),
+                        ],
+                        isDisabled: true,
+                        hintText: 'Disabled SelectBox',
                       ),
                       const SizedBox(height: 24),
                       
