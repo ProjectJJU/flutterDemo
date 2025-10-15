@@ -10,7 +10,7 @@
 
 ==============================================
 
-조건-피그마) 활용할MCP: CursorTalkToFigmaMCP(채널명: rmjniiij)
+조건-피그마) 활용할MCP: CursorTalkToFigmaMCP(채널명: txmt60sm)
 조건-피그마) 참고할 공통컴포넌트 노드ID(꺼짐): 3:1547
 조건-피그마) 참고할 공통컴포넌트 노드ID(켜짐): 3:3070
 
@@ -29,4 +29,3 @@
 
 핵심요구사항) lib/commons/constants/text_styles.dart를 불러와 글자스타일로만 채울것.
 
-핵심요구사항) 아래코드 참고해서 만들것.

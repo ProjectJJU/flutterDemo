@@ -5,6 +5,7 @@ import 'commons/providers/flutter-query/flutter-query.provider.dart';
 import 'commons/constants/text_styles.dart';
 import 'commons/components/searchbar/searchbar_export.dart' as searchbar;
 import 'commons/components/input/input_export.dart' as input;
+import 'commons/components/toggle/toggle_export.dart' as toggle;
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -34,6 +35,17 @@ class _MainScreenState extends State<MainScreen> with FlutterQueryMixin {
   final TextEditingController _inputTertiaryController = TextEditingController();
   final TextEditingController _inputErrorController = TextEditingController();
   final TextEditingController _inputDisabledController = TextEditingController();
+  
+  // Toggle 데모용 상태들
+  bool _basicToggle = false;
+  bool _primaryToggle = false;
+  bool _secondaryToggle = false;
+  bool _tertiaryToggle = false;
+  bool _smallToggle = false;
+  bool _mediumToggle = false;
+  bool _largeToggle = false;
+  bool _disabledToggle = false;
+  bool _withLabelToggle = false;
   
   // 검색 결과 상태
   String _searchResult = '';
@@ -71,7 +83,7 @@ class _MainScreenState extends State<MainScreen> with FlutterQueryMixin {
               child: Scaffold(
                 backgroundColor: Theme.of(context).colorScheme.surface, 
                 appBar: AppBar(
-                  title: Text('SearchBar & Input 데모'),
+                  title: Text('SearchBar, Input & Toggle 데모'),
                   actions: [
                     IconButton(
                       icon: Icon(_themeProvider.isDarkModeInContext(context) 
@@ -88,7 +100,7 @@ class _MainScreenState extends State<MainScreen> with FlutterQueryMixin {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      _buildSectionTitle('SearchBar & Input 컴포넌트 데모'),
+                      _buildSectionTitle('SearchBar, Input & Toggle 컴포넌트 데모'),
                       const SizedBox(height: 24),
                       
                       // 기본 SearchBar
@@ -338,6 +350,296 @@ class _MainScreenState extends State<MainScreen> with FlutterQueryMixin {
                         placeholder: '비활성화된 입력',
                         controller: _inputDisabledController,
                         enabled: false,
+                      ),
+                      const SizedBox(height: 24),
+                      
+                      // ============================================================================
+                      // Toggle 컴포넌트 데모
+                      // ============================================================================
+                      
+                      // Toggle 컴포넌트 섹션
+                      _buildSectionTitle('8. Toggle 컴포넌트 데모'),
+                      const SizedBox(height: 12),
+                      
+                      // 기본 Toggle
+                      _buildSectionTitle('8-1. 기본 Toggle'),
+                      const SizedBox(height: 12),
+                      Row(
+                        children: [
+                          toggle.Toggle(
+                            value: _basicToggle,
+                            onChanged: (value) {
+                              setState(() {
+                                _basicToggle = value;
+                              });
+                            },
+                          ),
+                          const SizedBox(width: 16),
+                          Text(
+                            '기본 토글: ${_basicToggle ? "켜짐" : "꺼짐"}',
+                            style: TextStyles.body01,
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 24),
+                      
+                      // Toggle Variant 데모
+                      _buildSectionTitle('8-2. Toggle Variant 데모'),
+                      const SizedBox(height: 12),
+                      
+                      // Primary
+                      Row(
+                        children: [
+                          toggle.Toggle(
+                            value: _primaryToggle,
+                            onChanged: (value) {
+                              setState(() {
+                                _primaryToggle = value;
+                              });
+                            },
+                            variant: toggle.ToggleStyles.primary,
+                          ),
+                          const SizedBox(width: 16),
+                          Text(
+                            'Primary: ${_primaryToggle ? "켜짐" : "꺼짐"}',
+                            style: TextStyles.body01,
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 16),
+                      
+                      // Secondary
+                      Row(
+                        children: [
+                          toggle.Toggle(
+                            value: _secondaryToggle,
+                            onChanged: (value) {
+                              setState(() {
+                                _secondaryToggle = value;
+                              });
+                            },
+                            variant: toggle.ToggleStyles.secondary,
+                          ),
+                          const SizedBox(width: 16),
+                          Text(
+                            'Secondary: ${_secondaryToggle ? "켜짐" : "꺼짐"}',
+                            style: TextStyles.body01,
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 16),
+                      
+                      // Tertiary
+                      Row(
+                        children: [
+                          toggle.Toggle(
+                            value: _tertiaryToggle,
+                            onChanged: (value) {
+                              setState(() {
+                                _tertiaryToggle = value;
+                              });
+                            },
+                            variant: toggle.ToggleStyles.tertiary,
+                          ),
+                          const SizedBox(width: 16),
+                          Text(
+                            'Tertiary: ${_tertiaryToggle ? "켜짐" : "꺼짐"}',
+                            style: TextStyles.body01,
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 24),
+                      
+                      // Toggle Size 데모
+                      _buildSectionTitle('8-3. Toggle Size 데모'),
+                      const SizedBox(height: 12),
+                      
+                      // Small
+                      Row(
+                        children: [
+                          toggle.Toggle(
+                            value: _smallToggle,
+                            onChanged: (value) {
+                              setState(() {
+                                _smallToggle = value;
+                              });
+                            },
+                            size: toggle.ToggleStyles.small,
+                          ),
+                          const SizedBox(width: 16),
+                          Text(
+                            'Small: ${_smallToggle ? "켜짐" : "꺼짐"}',
+                            style: TextStyles.body01,
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 16),
+                      
+                      // Medium
+                      Row(
+                        children: [
+                          toggle.Toggle(
+                            value: _mediumToggle,
+                            onChanged: (value) {
+                              setState(() {
+                                _mediumToggle = value;
+                              });
+                            },
+                            size: toggle.ToggleStyles.medium,
+                          ),
+                          const SizedBox(width: 16),
+                          Text(
+                            'Medium: ${_mediumToggle ? "켜짐" : "꺼짐"}',
+                            style: TextStyles.body01,
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 16),
+                      
+                      // Large
+                      Row(
+                        children: [
+                          toggle.Toggle(
+                            value: _largeToggle,
+                            onChanged: (value) {
+                              setState(() {
+                                _largeToggle = value;
+                              });
+                            },
+                            size: toggle.ToggleStyles.large,
+                          ),
+                          const SizedBox(width: 16),
+                          Text(
+                            'Large: ${_largeToggle ? "켜짐" : "꺼짐"}',
+                            style: TextStyles.body01,
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 24),
+                      
+                      // Toggle with Label 데모
+                      _buildSectionTitle('8-4. Toggle with Label 데모'),
+                      const SizedBox(height: 12),
+                      
+                      toggle.Toggle(
+                        value: _withLabelToggle,
+                        onChanged: (value) {
+                          setState(() {
+                            _withLabelToggle = value;
+                          });
+                        },
+                        label: '알림 설정',
+                        labelPosition: 'leading',
+                        variant: toggle.ToggleStyles.primary,
+                        size: toggle.ToggleStyles.medium,
+                      ),
+                      const SizedBox(height: 16),
+                      
+                      toggle.Toggle(
+                        value: _withLabelToggle,
+                        onChanged: (value) {
+                          setState(() {
+                            _withLabelToggle = value;
+                          });
+                        },
+                        label: '자동 저장',
+                        labelPosition: 'trailing',
+                        variant: toggle.ToggleStyles.secondary,
+                        size: toggle.ToggleStyles.medium,
+                      ),
+                      const SizedBox(height: 24),
+                      
+                      // Toggle 비활성화 상태 데모
+                      _buildSectionTitle('8-5. Toggle 비활성화 상태 데모'),
+                      const SizedBox(height: 12),
+                      
+                      Row(
+                        children: [
+                          toggle.Toggle(
+                            value: _disabledToggle,
+                            onChanged: null, // 비활성화
+                            disabled: true,
+                          ),
+                          const SizedBox(width: 16),
+                          Text(
+                            '비활성화된 토글',
+                            style: TextStyles.body01.copyWith(
+                              color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.6),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 24),
+                      
+                      // Toggle Factory 데모
+                      _buildSectionTitle('8-6. Toggle Factory 데모'),
+                      const SizedBox(height: 12),
+                      
+                      // Primary Factory
+                      Row(
+                        children: [
+                          toggle.ToggleFactory.primary(
+                            value: _primaryToggle,
+                            onChanged: (value) {
+                              setState(() {
+                                _primaryToggle = value;
+                              });
+                            },
+                            label: 'Primary Factory',
+                            labelPosition: 'leading',
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 16),
+                      
+                      // Secondary Factory
+                      Row(
+                        children: [
+                          toggle.ToggleFactory.secondary(
+                            value: _secondaryToggle,
+                            onChanged: (value) {
+                              setState(() {
+                                _secondaryToggle = value;
+                              });
+                            },
+                            label: 'Secondary Factory',
+                            labelPosition: 'leading',
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 16),
+                      
+                      // Small Factory
+                      Row(
+                        children: [
+                          toggle.ToggleFactory.small(
+                            value: _smallToggle,
+                            onChanged: (value) {
+                              setState(() {
+                                _smallToggle = value;
+                              });
+                            },
+                            label: 'Small Factory',
+                            labelPosition: 'leading',
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 16),
+                      
+                      // Large Factory
+                      Row(
+                        children: [
+                          toggle.ToggleFactory.large(
+                            value: _largeToggle,
+                            onChanged: (value) {
+                              setState(() {
+                                _largeToggle = value;
+                              });
+                            },
+                            label: 'Large Factory',
+                            labelPosition: 'leading',
+                          ),
+                        ],
                       ),
                       const SizedBox(height: 24),
                       

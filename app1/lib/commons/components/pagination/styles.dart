@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../constants/color_styles.dart';
 import '../../constants/text_styles.dart';
+import '../../constants/component_constants.dart';
 
 /// Pagination 컴포넌트 스타일 시스템
 /// 
@@ -13,27 +14,32 @@ abstract class PaginationStyles {
   PaginationStyles._();
 
   // ============================================================================
-  // Variant 상수
+  // Pagination 상수 (ComponentConstants에서 상속)
   // ============================================================================
   
-  static const String primary = 'primary';
-  static const String secondary = 'secondary';
-  static const String tertiary = 'tertiary';
+  /// Primary variant
+  static const String primary = ComponentConstants.primary;
+  
+  /// Secondary variant
+  static const String secondary = ComponentConstants.secondary;
+  
+  /// Tertiary variant
+  static const String tertiary = ComponentConstants.tertiary;
 
-  // ============================================================================
-  // Size 상수
-  // ============================================================================
+  /// Small size
+  static const String small = ComponentConstants.small;
   
-  static const String small = 'small';
-  static const String medium = 'medium';
-  static const String large = 'large';
+  /// Medium size
+  static const String medium = ComponentConstants.medium;
+  
+  /// Large size
+  static const String large = ComponentConstants.large;
 
-  // ============================================================================
-  // Theme 상수
-  // ============================================================================
+  /// Light theme
+  static const String light = ComponentConstants.light;
   
-  static const String light = 'light';
-  static const String dark = 'dark';
+  /// Dark theme
+  static const String dark = ComponentConstants.dark;
 
   // ============================================================================
   // Size별 크기 설정

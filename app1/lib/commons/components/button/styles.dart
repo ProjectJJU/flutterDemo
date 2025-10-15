@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../constants/color_styles.dart';
 import '../../constants/text_styles.dart';
+import '../../constants/component_constants.dart';
 
 /// 버튼 컴포넌트의 스타일 시스템
 /// 
@@ -13,40 +14,32 @@ class ButtonStyles {
   ButtonStyles._();
 
   // ============================================================================
-  // 버튼 Variant 정의
+  // 버튼 상수 (ComponentConstants에서 상속)
   // ============================================================================
   
   /// Primary 버튼 - 주요 액션용
-  static const String primary = 'primary';
+  static const String primary = ComponentConstants.primary;
   
   /// Secondary 버튼 - 보조 액션용
-  static const String secondary = 'secondary';
+  static const String secondary = ComponentConstants.secondary;
   
   /// Tertiary 버튼 - 텍스트 버튼용
-  static const String tertiary = 'tertiary';
+  static const String tertiary = ComponentConstants.tertiary;
 
-  // ============================================================================
-  // 버튼 Size 정의
-  // ============================================================================
-  
   /// Small 버튼 - 작은 크기
-  static const String small = 'small';
+  static const String small = ComponentConstants.small;
   
   /// Medium 버튼 - 중간 크기
-  static const String medium = 'medium';
+  static const String medium = ComponentConstants.medium;
   
   /// Large 버튼 - 큰 크기
-  static const String large = 'large';
+  static const String large = ComponentConstants.large;
 
-  // ============================================================================
-  // 버튼 Theme 정의
-  // ============================================================================
-  
   /// Light 테마
-  static const String light = 'light';
+  static const String light = ComponentConstants.light;
   
   /// Dark 테마
-  static const String dark = 'dark';
+  static const String dark = ComponentConstants.dark;
 
   // ============================================================================
   // Primary 버튼 스타일

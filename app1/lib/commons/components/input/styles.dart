@@ -1,26 +1,27 @@
 import 'package:flutter/material.dart';
 import '../../constants/color_styles.dart';
 import '../../constants/text_styles.dart';
+import '../../constants/component_constants.dart';
 
 // ============================================================================
 // Input 컴포넌트 Enum 정의
 // ============================================================================
 
-/// Input variant 타입
+/// Input variant 타입 (ComponentConstants 기반)
 enum InputVariant {
   primary,
   secondary,
   tertiary,
 }
 
-/// Input size 타입
+/// Input size 타입 (ComponentConstants 기반)
 enum InputSize {
   small,
   medium,
   large,
 }
 
-/// Input theme 타입
+/// Input theme 타입 (ComponentConstants 기반)
 enum InputThemeType {
   light,
   dark,
@@ -32,6 +33,34 @@ enum InputThemeType {
 class InputStyles {
   // Private constructor to prevent instantiation
   InputStyles._();
+
+  // ============================================================================
+  // Input 상수 (ComponentConstants에서 상속)
+  // ============================================================================
+  
+  /// Primary variant
+  static const String primary = ComponentConstants.primary;
+  
+  /// Secondary variant
+  static const String secondary = ComponentConstants.secondary;
+  
+  /// Tertiary variant
+  static const String tertiary = ComponentConstants.tertiary;
+
+  /// Small size
+  static const String small = ComponentConstants.small;
+  
+  /// Medium size
+  static const String medium = ComponentConstants.medium;
+  
+  /// Large size
+  static const String large = ComponentConstants.large;
+
+  /// Light theme
+  static const String light = ComponentConstants.light;
+  
+  /// Dark theme
+  static const String dark = ComponentConstants.dark;
 
   // ============================================================================
   // Size별 높이 정의
