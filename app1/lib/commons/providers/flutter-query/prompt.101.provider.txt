@@ -8,7 +8,7 @@
 
 ==============================================
 
-조건-파일경로) 구현될 dart 파일경로: lib/commons/providers/react-query/react-query.provider.dart
+조건-파일경로) 구현될 dart 파일경로: lib/commons/providers/flutter-query/flutter-query.provider.dart
 
 ==============================================
 
