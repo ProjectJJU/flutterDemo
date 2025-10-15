@@ -149,7 +149,11 @@ class _ButtonState extends State<Button> {
   List<Widget> _buildButtonContent(bool isDisabled) {
     final List<Widget> children = [];
     
-    // 로딩 상태일 때
+    // 아이콘과 텍스트 구성
+    final bool hasIcon = widget.icon != null;
+    final bool isLeadingIcon = widget.iconPosition == 'leading';
+    
+    // 로딩 상태일 때 로딩 인디케이터 추가
     if (widget.isLoading) {
       children.add(
         SizedBox(
@@ -167,13 +171,15 @@ class _ButtonState extends State<Button> {
           ),
         ),
       );
+      // 로딩 상태에서도 텍스트가 있으면 표시
+      if (widget.text.isNotEmpty) {
+        children.add(const SizedBox(width: 8));
+        children.add(_buildText(isDisabled));
+      }
       return children;
     }
     
-    // 아이콘과 텍스트 구성
-    final bool hasIcon = widget.icon != null;
-    final bool isLeadingIcon = widget.iconPosition == 'leading';
-    
+    // 일반 상태에서 아이콘과 텍스트 구성
     if (hasIcon && isLeadingIcon) {
       children.add(_buildIcon(isDisabled));
       if (widget.text.isNotEmpty) {

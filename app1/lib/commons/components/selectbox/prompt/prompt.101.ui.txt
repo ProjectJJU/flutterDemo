@@ -23,3 +23,9 @@
             - variant: 'primary' | 'secondary' | 'tertiary'
             - size: 'small' | 'medium' | 'large'
             - theme: 'light' | 'dark'
+
+핵심요구사항) lib/commons/constants/color_styles.dart를 불러와 색상으로만 채울것.
+
+핵심요구사항) lib/commons/constants/text_styles.dart를 불러와 글자스타일로만 채울것.
+
+핵심요구사항) 아래코드 참고해서 만들것.
