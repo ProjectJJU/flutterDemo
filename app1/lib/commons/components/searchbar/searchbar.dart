@@ -23,7 +23,7 @@ class SearchBar extends StatelessWidget {
   final SearchBarSize size;
   
   /// SearchBar theme (light, dark)
-  final SearchBarTheme theme;
+  final SearchBarThemeType theme;
   
   /// 에러 메시지
   final String? errorText;
@@ -71,7 +71,7 @@ class SearchBar extends StatelessWidget {
     this.controller,
     this.variant = SearchBarVariant.primary,
     this.size = SearchBarSize.medium,
-    this.theme = SearchBarTheme.light,
+    this.theme = SearchBarThemeType.light,
     this.errorText,
     this.prefixIcon,
     this.suffixIcon,
@@ -147,7 +147,7 @@ class SearchBar extends StatelessWidget {
   }
 
   /// Variant에 따른 색상 반환
-  SearchBarColors _getColorsByVariant(SearchBarVariant variant, SearchBarTheme theme) {
+  SearchBarColors _getColorsByVariant(SearchBarVariant variant, SearchBarThemeType theme) {
     switch (variant) {
       case SearchBarVariant.primary:
         return SearchBarStyles.getPrimaryColors(theme);
@@ -214,7 +214,7 @@ class SearchInputField extends StatelessWidget {
   final SearchBarSize size;
   
   /// SearchBar theme
-  final SearchBarTheme theme;
+  final SearchBarThemeType theme;
   
   /// 검색 콜백
   final ValueChanged<String>? onSearch;
@@ -230,7 +230,7 @@ class SearchInputField extends StatelessWidget {
     this.placeholder = '검색어를 입력해 주세요.',
     this.controller,
     this.size = SearchBarSize.medium,
-    this.theme = SearchBarTheme.light,
+    this.theme = SearchBarThemeType.light,
     this.onSearch,
     this.onChanged,
     this.focusNode,
@@ -257,7 +257,7 @@ class SearchInputField extends StatelessWidget {
 
   /// 아이콘 색상 반환
   Color _getIconColor() {
-    return theme == SearchBarTheme.light
+    return theme == SearchBarThemeType.light
         ? const Color(0xFF919191) // ColorStyles.gray50
         : const Color(0xFFABABAB); // ColorStyles.gray40
   }

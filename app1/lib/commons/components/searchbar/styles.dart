@@ -21,7 +21,7 @@ enum SearchBarSize {
 }
 
 /// SearchBar theme 타입
-enum SearchBarTheme {
+enum SearchBarThemeType {
   light,
   dark,
 }
@@ -78,8 +78,8 @@ class SearchBarStyles {
   // ============================================================================
   
   /// Primary variant 색상
-  static SearchBarColors getPrimaryColors(SearchBarTheme theme) {
-    return theme == SearchBarTheme.light
+  static SearchBarColors getPrimaryColors(SearchBarThemeType theme) {
+    return theme == SearchBarThemeType.light
         ? SearchBarColors(
             border: ColorStyles.gray30,
             focusedBorder: ColorStyles.blue50,
@@ -99,8 +99,8 @@ class SearchBarStyles {
   }
 
   /// Secondary variant 색상
-  static SearchBarColors getSecondaryColors(SearchBarTheme theme) {
-    return theme == SearchBarTheme.light
+  static SearchBarColors getSecondaryColors(SearchBarThemeType theme) {
+    return theme == SearchBarThemeType.light
         ? SearchBarColors(
             border: ColorStyles.gray20,
             focusedBorder: ColorStyles.blue30,
@@ -120,8 +120,8 @@ class SearchBarStyles {
   }
 
   /// Tertiary variant 색상
-  static SearchBarColors getTertiaryColors(SearchBarTheme theme) {
-    return theme == SearchBarTheme.light
+  static SearchBarColors getTertiaryColors(SearchBarThemeType theme) {
+    return theme == SearchBarThemeType.light
         ? SearchBarColors(
             border: ColorStyles.gray10,
             focusedBorder: ColorStyles.blue20,
@@ -148,7 +148,7 @@ class SearchBarStyles {
   static InputDecoration getDecoration({
     required SearchBarVariant variant,
     required SearchBarSize size,
-    required SearchBarTheme theme,
+    required SearchBarThemeType theme,
     String? hintText,
     Widget? prefixIcon,
     Widget? suffixIcon,
@@ -208,7 +208,7 @@ class SearchBarStyles {
   }
 
   /// Variant에 따른 색상 반환
-  static SearchBarColors _getColorsByVariant(SearchBarVariant variant, SearchBarTheme theme) {
+  static SearchBarColors _getColorsByVariant(SearchBarVariant variant, SearchBarThemeType theme) {
     switch (variant) {
       case SearchBarVariant.primary:
         return getPrimaryColors(theme);

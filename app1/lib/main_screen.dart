@@ -3,7 +3,7 @@ import 'commons/providers/modal/modal.provider.dart';
 import 'commons/providers/next-themes/next-themes.provider.dart';
 import 'commons/providers/flutter-query/flutter-query.provider.dart';
 import 'commons/constants/text_styles.dart';
-import 'commons/components/pagination/pagination_export.dart';
+import 'commons/components/searchbar/searchbar_export.dart' as searchbar;
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -17,9 +17,29 @@ class _MainScreenState extends State<MainScreen> with FlutterQueryMixin {
   final NextThemesProvider _themeProvider = NextThemesProvider();
   final FlutterQueryProvider _queryProvider = FlutterQueryProvider();
   
-  // Pagination 상태
-  int _currentPage = 1;
-  final int _totalPages = 10;
+  // SearchBar 데모용 컨트롤러들
+  final TextEditingController _basicController = TextEditingController();
+  final TextEditingController _searchController = TextEditingController();
+  final TextEditingController _primaryController = TextEditingController();
+  final TextEditingController _secondaryController = TextEditingController();
+  final TextEditingController _tertiaryController = TextEditingController();
+  final TextEditingController _errorController = TextEditingController();
+  final TextEditingController _disabledController = TextEditingController();
+  
+  // 검색 결과 상태
+  String _searchResult = '';
+
+  @override
+  void dispose() {
+    _basicController.dispose();
+    _searchController.dispose();
+    _primaryController.dispose();
+    _secondaryController.dispose();
+    _tertiaryController.dispose();
+    _errorController.dispose();
+    _disabledController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +55,7 @@ class _MainScreenState extends State<MainScreen> with FlutterQueryMixin {
               child: Scaffold(
                 backgroundColor: const Color(0xFFFFFFFF), // #FFFFFF
                 appBar: AppBar(
-                  title: Text('Main'),
+                  title: Text('SearchBar 데모'),
                   actions: [
                     IconButton(
                       icon: Icon(_themeProvider.isDarkModeInContext(context) 
@@ -47,140 +67,154 @@ class _MainScreenState extends State<MainScreen> with FlutterQueryMixin {
                     ),
                   ],
                 ),
-                body: Padding(
+                body: SingleChildScrollView(
                   padding: const EdgeInsets.all(16.0),
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      // 제목
                       Text(
-                        'Pagination 컴포넌트 데모',
+                        'SearchBar 컴포넌트 데모',
                         style: TextStyles.headline01,
                       ),
-                      const SizedBox(height: 32),
-                      Text(
-                        '현재 페이지: $_currentPage / $_totalPages',
-                        style: TextStyles.body01,
-                      ),
-                      const SizedBox(height: 32),
+                      const SizedBox(height: 24),
                       
-                      // Primary Pagination
-                      Text(
-                        'Primary Pagination',
-                        style: TextStyles.title02,
-                      ),
-                      const SizedBox(height: 16),
-                      Pagination(
-                        currentPage: _currentPage,
-                        totalPages: _totalPages,
-                        onPageChanged: (page) {
+                      // 기본 SearchBar
+                      _buildSectionTitle('1. 기본 SearchBar'),
+                      const SizedBox(height: 12),
+                      searchbar.SearchBar(
+                        label: '기본 검색',
+                        placeholder: '검색어를 입력하세요',
+                        controller: _basicController,
+                        onChanged: (value) {
                           setState(() {
-                            _currentPage = page;
+                            _searchResult = value;
                           });
                         },
-                        variant: PaginationStyles.primary,
-                        size: PaginationStyles.medium,
-                        theme: _themeProvider.isDarkModeInContext(context) 
-                            ? PaginationStyles.dark 
-                            : PaginationStyles.light,
                       ),
-                      const SizedBox(height: 32),
+                      const SizedBox(height: 24),
                       
-                      // Secondary Pagination
-                      Text(
-                        'Secondary Pagination',
-                        style: TextStyles.title02,
-                      ),
-                      const SizedBox(height: 16),
-                      Pagination(
-                        currentPage: _currentPage,
-                        totalPages: _totalPages,
-                        onPageChanged: (page) {
+                      // SearchInputField (검색 전용)
+                      _buildSectionTitle('2. SearchInputField (검색 전용)'),
+                      const SizedBox(height: 12),
+                      searchbar.SearchInputField(
+                        placeholder: '검색어를 입력해 주세요.',
+                        controller: _searchController,
+                        onSearch: (value) {
                           setState(() {
-                            _currentPage = page;
+                            _searchResult = '검색: $value';
                           });
                         },
-                        variant: PaginationStyles.secondary,
-                        size: PaginationStyles.medium,
-                        theme: _themeProvider.isDarkModeInContext(context) 
-                            ? PaginationStyles.dark 
-                            : PaginationStyles.light,
                       ),
-                      const SizedBox(height: 32),
+                      const SizedBox(height: 24),
                       
-                      // Tertiary Pagination
-                      Text(
-                        'Tertiary Pagination',
-                        style: TextStyles.title02,
+                      // Variant 데모
+                      _buildSectionTitle('3. Variant 데모'),
+                      const SizedBox(height: 12),
+                      
+                      // Primary
+                      searchbar.SearchBar(
+                        label: 'Primary Variant',
+                        placeholder: 'Primary 스타일',
+                        controller: _primaryController,
+                        variant: searchbar.SearchBarVariant.primary,
                       ),
                       const SizedBox(height: 16),
-                      Pagination(
-                        currentPage: _currentPage,
-                        totalPages: _totalPages,
-                        onPageChanged: (page) {
-                          setState(() {
-                            _currentPage = page;
-                          });
-                        },
-                        variant: PaginationStyles.tertiary,
-                        size: PaginationStyles.medium,
-                        theme: _themeProvider.isDarkModeInContext(context) 
-                            ? PaginationStyles.dark 
-                            : PaginationStyles.light,
-                      ),
-                      const SizedBox(height: 32),
                       
-                      // Size variants
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Column(
-                            children: [
-                              Text(
-                                'Small',
-                                style: TextStyles.caption01,
-                              ),
-                              const SizedBox(height: 8),
-                              Pagination(
-                                currentPage: _currentPage,
-                                totalPages: _totalPages,
-                                onPageChanged: (page) {
-                                  setState(() {
-                                    _currentPage = page;
-                                  });
-                                },
-                                variant: PaginationStyles.primary,
-                                size: PaginationStyles.small,
-                                theme: _themeProvider.isDarkModeInContext(context) 
-                                    ? PaginationStyles.dark 
-                                    : PaginationStyles.light,
-                              ),
-                            ],
+                      // Secondary
+                      searchbar.SearchBar(
+                        label: 'Secondary Variant',
+                        placeholder: 'Secondary 스타일',
+                        controller: _secondaryController,
+                        variant: searchbar.SearchBarVariant.secondary,
+                      ),
+                      const SizedBox(height: 16),
+                      
+                      // Tertiary
+                      searchbar.SearchBar(
+                        label: 'Tertiary Variant',
+                        placeholder: 'Tertiary 스타일',
+                        controller: _tertiaryController,
+                        variant: searchbar.SearchBarVariant.tertiary,
+                      ),
+                      const SizedBox(height: 24),
+                      
+                      // Size 데모
+                      _buildSectionTitle('4. Size 데모'),
+                      const SizedBox(height: 12),
+                      
+                      searchbar.SearchBar(
+                        label: 'Small Size',
+                        placeholder: 'Small 크기',
+                        size: searchbar.SearchBarSize.small,
+                      ),
+                      const SizedBox(height: 16),
+                      
+                      searchbar.SearchBar(
+                        label: 'Medium Size',
+                        placeholder: 'Medium 크기',
+                        size: searchbar.SearchBarSize.medium,
+                      ),
+                      const SizedBox(height: 16),
+                      
+                      searchbar.SearchBar(
+                        label: 'Large Size',
+                        placeholder: 'Large 크기',
+                        size: searchbar.SearchBarSize.large,
+                      ),
+                      const SizedBox(height: 24),
+                      
+                      // 에러 상태 데모
+                      _buildSectionTitle('5. 에러 상태 데모'),
+                      const SizedBox(height: 12),
+                      searchbar.SearchBar(
+                        label: '에러 상태',
+                        placeholder: '에러가 있는 입력',
+                        controller: _errorController,
+                        errorText: '올바른 값을 입력해주세요.',
+                        onChanged: (value) {
+                          // 에러 상태 데모용
+                        },
+                      ),
+                      const SizedBox(height: 24),
+                      
+                      // 비활성화 상태 데모
+                      _buildSectionTitle('6. 비활성화 상태 데모'),
+                      const SizedBox(height: 12),
+                      searchbar.SearchBar(
+                        label: '비활성화 상태',
+                        placeholder: '비활성화된 입력',
+                        controller: _disabledController,
+                        enabled: false,
+                      ),
+                      const SizedBox(height: 24),
+                      
+                      // 검색 결과 표시
+                      if (_searchResult.isNotEmpty) ...[
+                        _buildSectionTitle('검색 결과'),
+                        const SizedBox(height: 12),
+                        Container(
+                          width: double.infinity,
+                          padding: const EdgeInsets.all(16),
+                          decoration: BoxDecoration(
+                            color: Colors.blue.shade50,
+                            borderRadius: BorderRadius.circular(8),
+                            border: Border.all(color: Colors.blue.shade200),
                           ),
-                          Column(
-                            children: [
-                              Text(
-                                'Large',
-                                style: TextStyles.caption01,
-                              ),
-                              const SizedBox(height: 8),
-                              Pagination(
-                                currentPage: _currentPage,
-                                totalPages: _totalPages,
-                                onPageChanged: (page) {
-                                  setState(() {
-                                    _currentPage = page;
-                                  });
-                                },
-                                variant: PaginationStyles.primary,
-                                size: PaginationStyles.large,
-                                theme: _themeProvider.isDarkModeInContext(context) 
-                                    ? PaginationStyles.dark 
-                                    : PaginationStyles.light,
-                              ),
-                            ],
+                          child: Text(
+                            _searchResult,
+                            style: const TextStyle(
+                              fontFamily: 'Pretendard',
+                              fontSize: 14,
+                              color: Colors.blue,
+                            ),
                           ),
-                        ],
-                      ),
+                        ),
+                        const SizedBox(height: 24),
+                      ],
+                      
+                      // 하단 여백
+                      const SizedBox(height: 32),
                     ],
                   ),
                 ),
@@ -188,6 +222,19 @@ class _MainScreenState extends State<MainScreen> with FlutterQueryMixin {
             );
           },
         ),
+      ),
+    );
+  }
+  
+  /// 섹션 제목 위젯
+  Widget _buildSectionTitle(String title) {
+    return Text(
+      title,
+      style: const TextStyle(
+        fontFamily: 'Pretendard',
+        fontSize: 18,
+        fontWeight: FontWeight.w700,
+        color: Color(0xFF1A1A1A),
       ),
     );
   }
