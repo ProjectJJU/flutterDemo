@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'main_screen.dart';
+import 'commons/providers/modal/modal.provider.dart';
 
 void main() {
   runApp(const MyApp());
