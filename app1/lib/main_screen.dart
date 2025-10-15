@@ -3,7 +3,7 @@ import 'commons/providers/modal/modal.provider.dart';
 import 'commons/providers/next-themes/next-themes.provider.dart';
 import 'commons/providers/flutter-query/flutter-query.provider.dart';
 import 'commons/constants/text_styles.dart';
-import 'commons/components/button/button_export.dart';
+import 'commons/components/pagination/pagination_export.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -16,6 +16,10 @@ class _MainScreenState extends State<MainScreen> with FlutterQueryMixin {
   final ModalProvider _modalProvider = ModalProvider();
   final NextThemesProvider _themeProvider = NextThemesProvider();
   final FlutterQueryProvider _queryProvider = FlutterQueryProvider();
+  
+  // Pagination 상태
+  int _currentPage = 1;
+  final int _totalPages = 10;
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +33,7 @@ class _MainScreenState extends State<MainScreen> with FlutterQueryMixin {
             return ModalPortal(
               modalProvider: _modalProvider,
               child: Scaffold(
+                backgroundColor: const Color(0xFFFFFFFF), // #FFFFFF
                 appBar: AppBar(
                   title: Text('Main'),
                   actions: [
@@ -42,174 +47,139 @@ class _MainScreenState extends State<MainScreen> with FlutterQueryMixin {
                     ),
                   ],
                 ),
-                body: Center(
+                body: Padding(
+                  padding: const EdgeInsets.all(16.0),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'Hello World',
+                        'Pagination 컴포넌트 데모',
+                        style: TextStyles.headline01,
+                      ),
+                      const SizedBox(height: 32),
+                      Text(
+                        '현재 페이지: $_currentPage / $_totalPages',
                         style: TextStyles.body01,
                       ),
-                      const SizedBox(height: 20),
-                      ButtonFactory.primary(
-                        text: '모달 열기',
-                        onPressed: () {
-                          _modalProvider.openModal(
-                            title: '테스트 모달',                        
-                            content: Padding(
-                              padding: EdgeInsets.all(16),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Text(
-                                    '모달 테스트',
-                                    style: TextStyles.body01,
-                                  ),
-                                  SizedBox(height: 10),
-                                  Text('이것은 모달 콘텐츠입니다.', style: TextStyles.body01),
-                                  SizedBox(height: 10),
-                                  Text('내용 크기에 맞게 표시됩니다.', style: TextStyles.body01),
-                                ],
-                              ),
-                            ),
-                          );
-                        },
+                      const SizedBox(height: 32),
+                      
+                      // Primary Pagination
+                      Text(
+                        'Primary Pagination',
+                        style: TextStyles.title02,
                       ),
-                      const SizedBox(height: 20),
-                      ButtonFactory.secondary(
-                        text: 'Flutter Query 테스트',
-                        onPressed: () async {
-                          try {
-                            final result = await useQuery<String>(
-                              queryKey: 'test-query',
-                              queryFn: () async {
-                                await Future.delayed(Duration(seconds: 2));
-                                return '캐시된 데이터: ${DateTime.now().toString()}';
-                              },
-                              staleTime: Duration(minutes: 5),
-                              cacheTime: Duration(minutes: 10),
-                            );
-                            
-                            _modalProvider.openModal(
-                              title: 'Flutter Query 테스트',
-                              content: Padding(
-                                padding: EdgeInsets.all(16),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    Text(
-                                      '쿼리 결과',
-                                      style: TextStyles.body01,
-                                    ),
-                                    SizedBox(height: 10),
-                                    Text(result, style: TextStyles.body01),
-                                    SizedBox(height: 10),
-                                    Text('캐시 크기: ${_queryProvider.cacheSize}', style: TextStyles.body01),
-                                    Text('활성 쿼리: ${_queryProvider.activeQueriesCount}', style: TextStyles.body01),
-                                  ],
-                                ),
-                              ),
-                            );
-                          } catch (e) {
-                            _modalProvider.openModal(
-                              title: '에러',
-                              content: Padding(
-                                padding: EdgeInsets.all(16),
-                                child: Text('쿼리 실행 중 에러: $e', style: TextStyles.body01),
-                              ),
-                            );
-                          }
+                      const SizedBox(height: 16),
+                      Pagination(
+                        currentPage: _currentPage,
+                        totalPages: _totalPages,
+                        onPageChanged: (page) {
+                          setState(() {
+                            _currentPage = page;
+                          });
                         },
+                        variant: PaginationStyles.primary,
+                        size: PaginationStyles.medium,
+                        theme: _themeProvider.isDarkModeInContext(context) 
+                            ? PaginationStyles.dark 
+                            : PaginationStyles.light,
                       ),
-                      const SizedBox(height: 20),
-                      // 다양한 버튼 예제들
+                      const SizedBox(height: 32),
+                      
+                      // Secondary Pagination
+                      Text(
+                        'Secondary Pagination',
+                        style: TextStyles.title02,
+                      ),
+                      const SizedBox(height: 16),
+                      Pagination(
+                        currentPage: _currentPage,
+                        totalPages: _totalPages,
+                        onPageChanged: (page) {
+                          setState(() {
+                            _currentPage = page;
+                          });
+                        },
+                        variant: PaginationStyles.secondary,
+                        size: PaginationStyles.medium,
+                        theme: _themeProvider.isDarkModeInContext(context) 
+                            ? PaginationStyles.dark 
+                            : PaginationStyles.light,
+                      ),
+                      const SizedBox(height: 32),
+                      
+                      // Tertiary Pagination
+                      Text(
+                        'Tertiary Pagination',
+                        style: TextStyles.title02,
+                      ),
+                      const SizedBox(height: 16),
+                      Pagination(
+                        currentPage: _currentPage,
+                        totalPages: _totalPages,
+                        onPageChanged: (page) {
+                          setState(() {
+                            _currentPage = page;
+                          });
+                        },
+                        variant: PaginationStyles.tertiary,
+                        size: PaginationStyles.medium,
+                        theme: _themeProvider.isDarkModeInContext(context) 
+                            ? PaginationStyles.dark 
+                            : PaginationStyles.light,
+                      ),
+                      const SizedBox(height: 32),
+                      
+                      // Size variants
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          ButtonFactory.small(
-                            text: 'Small',
-                            onPressed: () {
-                              _modalProvider.openModal(
-                                title: 'Small 버튼',
-                                content: Padding(
-                                  padding: EdgeInsets.all(16),
-                                  child: Text('Small 크기 버튼이 클릭되었습니다!', style: TextStyles.body01),
-                                ),
-                              );
-                            },
+                          Column(
+                            children: [
+                              Text(
+                                'Small',
+                                style: TextStyles.caption01,
+                              ),
+                              const SizedBox(height: 8),
+                              Pagination(
+                                currentPage: _currentPage,
+                                totalPages: _totalPages,
+                                onPageChanged: (page) {
+                                  setState(() {
+                                    _currentPage = page;
+                                  });
+                                },
+                                variant: PaginationStyles.primary,
+                                size: PaginationStyles.small,
+                                theme: _themeProvider.isDarkModeInContext(context) 
+                                    ? PaginationStyles.dark 
+                                    : PaginationStyles.light,
+                              ),
+                            ],
                           ),
-                          const SizedBox(width: 12),
-                          ButtonFactory.secondary(
-                            text: 'Medium',
-                            onPressed: () {
-                              _modalProvider.openModal(
-                                title: 'Medium 버튼',
-                                content: Padding(
-                                  padding: EdgeInsets.all(16),
-                                  child: Text('Medium 크기 버튼이 클릭되었습니다!', style: TextStyles.body01),
-                                ),
-                              );
-                            },
-                          ),
-                          const SizedBox(width: 12),
-                          ButtonFactory.large(
-                            text: 'Large',
-                            onPressed: () {
-                              _modalProvider.openModal(
-                                title: 'Large 버튼',
-                                content: Padding(
-                                  padding: EdgeInsets.all(16),
-                                  child: Text('Large 크기 버튼이 클릭되었습니다!', style: TextStyles.body01),
-                                ),
-                              );
-                            },
+                          Column(
+                            children: [
+                              Text(
+                                'Large',
+                                style: TextStyles.caption01,
+                              ),
+                              const SizedBox(height: 8),
+                              Pagination(
+                                currentPage: _currentPage,
+                                totalPages: _totalPages,
+                                onPageChanged: (page) {
+                                  setState(() {
+                                    _currentPage = page;
+                                  });
+                                },
+                                variant: PaginationStyles.primary,
+                                size: PaginationStyles.large,
+                                theme: _themeProvider.isDarkModeInContext(context) 
+                                    ? PaginationStyles.dark 
+                                    : PaginationStyles.light,
+                              ),
+                            ],
                           ),
                         ],
-                      ),
-                      const SizedBox(height: 20),
-                      // 아이콘이 있는 버튼들
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          ButtonFactory.primary(
-                            text: '추가',
-                            icon: Icons.add,
-                            iconPosition: 'leading',
-                            onPressed: () {
-                              _modalProvider.openModal(
-                                title: '추가 버튼',
-                                content: Padding(
-                                  padding: EdgeInsets.all(16),
-                                  child: Text('아이콘이 있는 Primary 버튼이 클릭되었습니다!', style: TextStyles.body01),
-                                ),
-                              );
-                            },
-                          ),
-                          const SizedBox(width: 12),
-                          ButtonFactory.secondary(
-                            text: '저장',
-                            icon: Icons.save,
-                            iconPosition: 'trailing',
-                            onPressed: () {
-                              _modalProvider.openModal(
-                                title: '저장 버튼',
-                                content: Padding(
-                                  padding: EdgeInsets.all(16),
-                                  child: Text('아이콘이 있는 Secondary 버튼이 클릭되었습니다!', style: TextStyles.body01),
-                                ),
-                              );
-                            },
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 20),
-                      // 로딩 버튼 예제
-                      ButtonFactory.primary(
-                        text: '로딩 테스트',
-                        isLoading: true,
-                        onPressed: () {
-                          // 로딩 중이므로 실행되지 않음
-                        },
                       ),
                     ],
                   ),
