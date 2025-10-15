@@ -3,6 +3,7 @@ import 'commons/providers/modal/modal.provider.dart';
 import 'commons/providers/next-themes/next-themes.provider.dart';
 import 'commons/providers/flutter-query/flutter-query.provider.dart';
 import 'commons/constants/text_styles.dart';
+import 'commons/components/button/button_export.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -50,7 +51,8 @@ class _MainScreenState extends State<MainScreen> with FlutterQueryMixin {
                         style: TextStyles.body01,
                       ),
                       const SizedBox(height: 20),
-                      ElevatedButton(
+                      ButtonFactory.primary(
+                        text: '모달 열기',
                         onPressed: () {
                           _modalProvider.openModal(
                             title: '테스트 모달',                        
@@ -72,10 +74,10 @@ class _MainScreenState extends State<MainScreen> with FlutterQueryMixin {
                             ),
                           );
                         },
-                        child: Text('모달 열기', style: TextStyles.body01),
                       ),
                       const SizedBox(height: 20),
-                      ElevatedButton(
+                      ButtonFactory.secondary(
+                        text: 'Flutter Query 테스트',
                         onPressed: () async {
                           try {
                             final result = await useQuery<String>(
@@ -118,7 +120,96 @@ class _MainScreenState extends State<MainScreen> with FlutterQueryMixin {
                             );
                           }
                         },
-                        child: Text('Flutter Query 테스트', style: TextStyles.body01),
+                      ),
+                      const SizedBox(height: 20),
+                      // 다양한 버튼 예제들
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          ButtonFactory.small(
+                            text: 'Small',
+                            onPressed: () {
+                              _modalProvider.openModal(
+                                title: 'Small 버튼',
+                                content: Padding(
+                                  padding: EdgeInsets.all(16),
+                                  child: Text('Small 크기 버튼이 클릭되었습니다!', style: TextStyles.body01),
+                                ),
+                              );
+                            },
+                          ),
+                          const SizedBox(width: 12),
+                          ButtonFactory.secondary(
+                            text: 'Medium',
+                            onPressed: () {
+                              _modalProvider.openModal(
+                                title: 'Medium 버튼',
+                                content: Padding(
+                                  padding: EdgeInsets.all(16),
+                                  child: Text('Medium 크기 버튼이 클릭되었습니다!', style: TextStyles.body01),
+                                ),
+                              );
+                            },
+                          ),
+                          const SizedBox(width: 12),
+                          ButtonFactory.large(
+                            text: 'Large',
+                            onPressed: () {
+                              _modalProvider.openModal(
+                                title: 'Large 버튼',
+                                content: Padding(
+                                  padding: EdgeInsets.all(16),
+                                  child: Text('Large 크기 버튼이 클릭되었습니다!', style: TextStyles.body01),
+                                ),
+                              );
+                            },
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 20),
+                      // 아이콘이 있는 버튼들
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          ButtonFactory.primary(
+                            text: '추가',
+                            icon: Icons.add,
+                            iconPosition: 'leading',
+                            onPressed: () {
+                              _modalProvider.openModal(
+                                title: '추가 버튼',
+                                content: Padding(
+                                  padding: EdgeInsets.all(16),
+                                  child: Text('아이콘이 있는 Primary 버튼이 클릭되었습니다!', style: TextStyles.body01),
+                                ),
+                              );
+                            },
+                          ),
+                          const SizedBox(width: 12),
+                          ButtonFactory.secondary(
+                            text: '저장',
+                            icon: Icons.save,
+                            iconPosition: 'trailing',
+                            onPressed: () {
+                              _modalProvider.openModal(
+                                title: '저장 버튼',
+                                content: Padding(
+                                  padding: EdgeInsets.all(16),
+                                  child: Text('아이콘이 있는 Secondary 버튼이 클릭되었습니다!', style: TextStyles.body01),
+                                ),
+                              );
+                            },
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 20),
+                      // 로딩 버튼 예제
+                      ButtonFactory.primary(
+                        text: '로딩 테스트',
+                        isLoading: true,
+                        onPressed: () {
+                          // 로딩 중이므로 실행되지 않음
+                        },
                       ),
                     ],
                   ),
