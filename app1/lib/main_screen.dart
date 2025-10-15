@@ -69,9 +69,7 @@ class _MainScreenState extends State<MainScreen> with FlutterQueryMixin {
             return ModalPortal(
               modalProvider: _modalProvider,
               child: Scaffold(
-                backgroundColor: _themeProvider.isDarkModeInContext(context) 
-                  ? const Color(0xFF1C1C1C) // 다크 모드 배경색
-                  : const Color(0xFFFFFFFF), // 라이트 모드 배경색
+                backgroundColor: Theme.of(context).colorScheme.surface, 
                 appBar: AppBar(
                   title: Text('SearchBar & Input 데모'),
                   actions: [
@@ -90,11 +88,7 @@ class _MainScreenState extends State<MainScreen> with FlutterQueryMixin {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      // 제목
-                      Text(
-                        'SearchBar & Input 컴포넌트 데모',
-                        style: TextStyles.headline01,
-                      ),
+                      _buildSectionTitle('SearchBar & Input 컴포넌트 데모'),
                       const SizedBox(height: 24),
                       
                       // 기본 SearchBar
@@ -362,13 +356,12 @@ class _MainScreenState extends State<MainScreen> with FlutterQueryMixin {
   
   /// 섹션 제목 위젯
   Widget _buildSectionTitle(String title) {
-    return Text(
-      title,
-      style: TextStyle(
-        fontFamily: 'Pretendard',
-        fontSize: 18,
-        fontWeight: FontWeight.w700,
-        color: Theme.of(context).colorScheme.onSurface,
+    return Builder(
+      builder: (context) => Text(
+        title,
+        style: TextStyles.headline01.copyWith(
+          color: Theme.of(context).colorScheme.onSurface,
+        ),
       ),
     );
   }
