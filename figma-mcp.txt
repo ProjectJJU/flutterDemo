@@ -17,6 +17,9 @@ plugin : Cursor Talk To Figma Plugin -> connect -> copy mcp.json
 
 5. cursor 열기 
 ctrl + shft + P -> mcp.json -> paste clipboard
+설정 -> Tools&MCP -> TalkToFigma 연결확인.
+
+ctrl + shft + P -> flutter : select device
 
 
 **** 재실행시 

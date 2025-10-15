@@ -1,0 +1,3 @@
+flutter -> setting icon click -> Chat
+* Auto Run Mode -> Run Everything 
+* File-Deletion Protection만 False로 놔두고 나머진 다 True로
