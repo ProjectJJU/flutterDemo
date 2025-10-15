@@ -5,7 +5,7 @@ import '../../constants/text_styles.dart';
 /// Next.js의 next-themes와 유사한 테마 관리 Provider
 /// 라이트/다크 모드 전환과 시스템 테마 감지를 지원합니다.
 class NextThemesProvider extends ChangeNotifier {
-  ThemeMode _themeMode = ThemeMode.system;
+  ThemeMode _themeMode = ThemeMode.light; // 초기값을 라이트 모드로 설정
   
   /// 현재 테마 모드
   ThemeMode get themeMode => _themeMode;
@@ -60,12 +60,12 @@ class NextThemesProvider extends ChangeNotifier {
       colorScheme: const ColorScheme.light(
         primary: ColorStyles.blue50,
         secondary: ColorStyles.blue40,
-        surface: ColorStyles.gray05,
+        surface: ColorStyles.white,
         error: ColorStyles.red30,
-        onPrimary: ColorStyles.white,
-        onSecondary: ColorStyles.white,
+        onPrimary: ColorStyles.gray05,
+        onSecondary: ColorStyles.gray05,
         onSurface: ColorStyles.gray80,
-        onError: ColorStyles.white,
+        onError: ColorStyles.gray05,
       ),
       appBarTheme: const AppBarTheme(
         backgroundColor: ColorStyles.blue50,
