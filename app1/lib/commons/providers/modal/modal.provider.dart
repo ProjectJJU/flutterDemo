@@ -1,22 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import '../../../commons/constants/text_styles.dart';
 
 /// Modal Provider
-/// ¸ğ´Ş »óÅÂ °ü¸®¸¦ À§ÇÑ Provider Å¬·¡½º
+/// ëª¨ë‹¬ ìƒíƒœ ê´€ë¦¬ë¥¼ ìœ„í•œ Provider í´ë˜ìŠ¤
 class ModalProvider extends ChangeNotifier {
   bool _isModalOpen = false;
   Widget? _modalContent;
   String? _modalTitle;
 
-  /// ¸ğ´ŞÀÌ ¿­·ÁÀÖ´ÂÁö È®ÀÎ
+  /// ëª¨ë‹¬ì´ ì—´ë ¤ìˆëŠ”ì§€ í™•ì¸
   bool get isModalOpen => _isModalOpen;
 
-  /// ÇöÀç ¸ğ´Ş ÄÜÅÙÃ÷
+  /// í˜„ì¬ ëª¨ë‹¬ ì½˜í…ì¸ 
   Widget? get modalContent => _modalContent;
 
-  /// ÇöÀç ¸ğ´Ş Á¦¸ñ
+  /// í˜„ì¬ ëª¨ë‹¬ ì œëª©
   String? get modalTitle => _modalTitle;
 
-  /// ¸ğ´Ş ¿­±â
+  /// ëª¨ë‹¬ ì—´ê¸°
   void openModal({
     required Widget content,
     String? title,
@@ -27,7 +29,7 @@ class ModalProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  /// ¸ğ´Ş ´İ±â
+  /// ëª¨ë‹¬ ë‹«ê¸°
   void closeModal() {
     _isModalOpen = false;
     _modalContent = null;
@@ -35,13 +37,13 @@ class ModalProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  /// ¸ğ´Ş ÄÜÅÙÃ÷ ¾÷µ¥ÀÌÆ®
+  /// ëª¨ë‹¬ ì½˜í…ì¸  ì—…ë°ì´íŠ¸
   void updateModalContent(Widget content) {
     _modalContent = content;
     notifyListeners();
   }
 
-  /// ¸ğ´Ş Á¦¸ñ ¾÷µ¥ÀÌÆ®
+  /// ëª¨ë‹¬ ì œëª© ì—…ë°ì´íŠ¸
   void updateModalTitle(String title) {
     _modalTitle = title;
     notifyListeners();
@@ -49,7 +51,7 @@ class ModalProvider extends ChangeNotifier {
 }
 
 /// Modal Portal Widget
-/// ¸ğ´ŞÀ» È­¸é¿¡ Ç¥½ÃÇÏ´Â Æ÷ÅĞ À§Á¬
+/// ëª¨ë‹¬ì„ í™”ë©´ì— í‘œì‹œí•˜ëŠ” í¬í„¸ ìœ„ì ¯
 class ModalPortal extends StatelessWidget {
   final Widget child;
   final ModalProvider modalProvider;
@@ -75,8 +77,8 @@ class ModalPortal extends StatelessWidget {
 }
 
 /// Modal Overlay
-/// ¸ğ´Ş ¹è°æ ¿À¹ö·¹ÀÌ¿Í ¸ğ´Ş ÄÜÅÙÃ÷¸¦ Ç¥½ÃÇÏ´Â À§Á¬
-class _ModalOverlay extends StatelessWidget {
+/// ëª¨ë‹¬ ë°°ê²½ ì˜¤ë²„ë ˆì´ì™€ ëª¨ë‹¬ ì½˜í…ì¸ ë¥¼ í‘œì‹œí•˜ëŠ” ìœ„ì ¯
+class _ModalOverlay extends StatefulWidget {
   final ModalProvider modalProvider;
 
   const _ModalOverlay({
@@ -84,43 +86,80 @@ class _ModalOverlay extends StatelessWidget {
   });
 
   @override
+  State<_ModalOverlay> createState() => _ModalOverlayState();
+}
+
+class _ModalOverlayState extends State<_ModalOverlay> {
+  @override
+  void initState() {
+    super.initState();
+    // í¬ì»¤ìŠ¤ë¥¼ ë°›ì„ ìˆ˜ ìˆë„ë¡ ì„¤ì •
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      FocusScope.of(context).requestFocus(FocusNode());
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Material(
-      color: Colors.black.withOpacity(0.5),
-      child: GestureDetector(
-        onTap: () => modalProvider.closeModal(),
-        child: Center(
-          child: GestureDetector(
-            onTap: () {}, // ¸ğ´Ş ÄÜÅÙÃ÷ Å¬¸¯ ½Ã ´İÈ÷Áö ¾Êµµ·Ï
-            child: Container(
-              constraints: const BoxConstraints(
-                maxWidth: 400,
-                maxHeight: 600,
-              ),
-              margin: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(12),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.2),
-                    blurRadius: 10,
-                    offset: const Offset(0, 4),
+    return Focus(
+      autofocus: true,
+      onKeyEvent: (node, event) {
+        if (event.logicalKey == LogicalKeyboardKey.escape) {
+          widget.modalProvider.closeModal();
+          return KeyEventResult.handled;
+        }
+        return KeyEventResult.ignored;
+      },
+      child: Container(
+        color: Colors.black.withValues(alpha: 0.5),
+        child: GestureDetector(
+          onTap: () => widget.modalProvider.closeModal(),
+          behavior: HitTestBehavior.opaque,
+          child: Center(
+            child: GestureDetector(
+              onTap: () {}, // ëª¨ë‹¬ ì½˜í…ì¸  í´ë¦­ ì‹œ ë‹«íˆì§€ ì•Šë„ë¡
+              behavior: HitTestBehavior.opaque,
+              child: Container(
+                constraints: BoxConstraints(
+                  maxWidth: MediaQuery.of(context).size.width * 0.9,
+                  maxHeight: MediaQuery.of(context).size.height * 0.8,
+                  minWidth: 300,
+                ),
+                margin: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(
+                    color: Colors.grey.withValues(alpha: 0.5),
+                    width: 1,
                   ),
-                ],
-              ),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  if (modalProvider.modalTitle != null)
-                    _ModalHeader(
-                      title: modalProvider.modalTitle!,
-                      onClose: modalProvider.closeModal,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withValues(alpha: 0.5),
+                      blurRadius: 8,
+                      offset: const Offset(0, 2),
+                      spreadRadius: 0,
                     ),
-                  Flexible(
-                    child: modalProvider.modalContent ?? const SizedBox(),
+                  ],
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(12),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      if (widget.modalProvider.modalTitle != null)
+                        _ModalHeader(
+                          title: widget.modalProvider.modalTitle!,
+                          onClose: widget.modalProvider.closeModal,
+                        ),
+                      Flexible(
+                        child: SingleChildScrollView(
+                          child: widget.modalProvider.modalContent ?? const SizedBox(),
+                        ),
+                      ),
+                    ],
                   ),
-                ],
+                ),
               ),
             ),
           ),
@@ -131,7 +170,7 @@ class _ModalOverlay extends StatelessWidget {
 }
 
 /// Modal Header
-/// ¸ğ´Ş Çì´õ À§Á¬ (Á¦¸ñ°ú ´İ±â ¹öÆ°)
+/// ëª¨ë‹¬ í—¤ë” ìœ„ì ¯ (ì œëª©ê³¼ ë‹«ê¸° ë²„íŠ¼)
 class _ModalHeader extends StatelessWidget {
   final String title;
   final VoidCallback onClose;
@@ -158,10 +197,9 @@ class _ModalHeader extends StatelessWidget {
           Expanded(
             child: Text(
               title,
-              style: const TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
+              style: TextStyles.body01.copyWith(
+                color: Colors.black,
+              ),              
             ),
           ),
           IconButton(

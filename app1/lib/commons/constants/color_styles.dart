@@ -1,206 +1,206 @@
 import 'package:flutter/material.dart';
 
-/// ÇÁ·ÎÁ§Æ® ÀüÃ¼¿¡¼­ »ç¿ëµÇ´Â »ö»ó ÅäÅ« ½Ã½ºÅÛ
-/// ´ÙÅ©¸ğµå¸¦ Æ÷ÇÔÇÏ¿© ¸ğµç Å×¸¶¿¡¼­ ÀÏ°üµÈ »ö»ó »ç¿ëÀ» º¸ÀåÇÕ´Ï´Ù.
+/// í”„ë¡œì íŠ¸ ì „ì²´ì—ì„œ ì‚¬ìš©ë˜ëŠ” ìƒ‰ìƒ í† í° ì‹œìŠ¤í…œ
+/// ë‹¤í¬ëª¨ë“œë¥¼ í¬í•¨í•˜ì—¬ ëª¨ë“  í…Œë§ˆì—ì„œ ì¼ê´€ëœ ìƒ‰ìƒ ì‚¬ìš©ì„ ë³´ì¥í•©ë‹ˆë‹¤.
 abstract class ColorStyles {
   // Private constructor to prevent instantiation
   ColorStyles._();
 
   // ============================================================================
-  // Blue »ö»ó ÆÈ·¹Æ®
+  // Blue ìƒ‰ìƒ íŒ”ë ˆíŠ¸
   // ============================================================================
   
-  /// Blue05 - °¡Àå ¿¬ÇÑ ÆÄ¶õ»ö (#F0F7FF)
+  /// Blue05 - ê°€ì¥ ì—°í•œ íŒŒë€ìƒ‰ (#F0F7FF)
   static const Color blue05 = Color(0xFFF0F7FF);
   
-  /// Blue10 - ¿¬ÇÑ ÆÄ¶õ»ö (#DBEEFF)
+  /// Blue10 - ì—°í•œ íŒŒë€ìƒ‰ (#DBEEFF)
   static const Color blue10 = Color(0xFFDBEEFF);
   
-  /// Blue20 - ¹àÀº ÆÄ¶õ»ö (#BDDBFF)
+  /// Blue20 - ë°ì€ íŒŒë€ìƒ‰ (#BDDBFF)
   static const Color blue20 = Color(0xFFBDDBFF);
   
-  /// Blue30 - Áß°£ ¹à±â ÆÄ¶õ»ö (#93BEFF)
+  /// Blue30 - ì¤‘ê°„ ë°ê¸° íŒŒë€ìƒ‰ (#93BEFF)
   static const Color blue30 = Color(0xFF93BEFF);
   
-  /// Blue40 - ½Ã½ºÅÛ »ö»ó (#6DA5FA)
+  /// Blue40 - ì‹œìŠ¤í…œ ìƒ‰ìƒ (#6DA5FA)
   static const Color blue40 = Color(0xFF6DA5FA);
   
-  /// Blue50 - ±âº» ÆÄ¶õ»ö (#497CFF)
+  /// Blue50 - ê¸°ë³¸ íŒŒë€ìƒ‰ (#497CFF)
   static const Color blue50 = Color(0xFF497CFF);
   
-  /// Blue60 - ½Ã½ºÅÛ »ö»ó (#3A5CF3)
+  /// Blue60 - ì‹œìŠ¤í…œ ìƒ‰ìƒ (#3A5CF3)
   static const Color blue60 = Color(0xFF3A5CF3);
   
-  /// Blue70 - ÁøÇÑ ÆÄ¶õ»ö (#274AE1)
+  /// Blue70 - ì§„í•œ íŒŒë€ìƒ‰ (#274AE1)
   static const Color blue70 = Color(0xFF274AE1);
   
-  /// Blue80 - ¾îµÎ¿î ÆÄ¶õ»ö (#1530A6)
+  /// Blue80 - ì–´ë‘ìš´ íŒŒë€ìƒ‰ (#1530A6)
   static const Color blue80 = Color(0xFF1530A6);
   
-  /// Blue90 - °¡Àå ¾îµÎ¿î ÆÄ¶õ»ö (#0B2184)
+  /// Blue90 - ê°€ì¥ ì–´ë‘ìš´ íŒŒë€ìƒ‰ (#0B2184)
   static const Color blue90 = Color(0xFF0B2184);
 
   // ============================================================================
-  // Gray »ö»ó ÆÈ·¹Æ®
+  // Gray ìƒ‰ìƒ íŒ”ë ˆíŠ¸
   // ============================================================================
   
-  /// White - ¼ø¹é»ö (#FFFFFF)
+  /// White - ìˆœë°±ìƒ‰ (#FFFFFF)
   static const Color white = Color(0xFFFFFFFF);
   
-  /// Gray05 - °¡Àå ¿¬ÇÑ È¸»ö (#F2F2F2)
+  /// Gray05 - ê°€ì¥ ì—°í•œ íšŒìƒ‰ (#F2F2F2)
   static const Color gray05 = Color(0xFFF2F2F2);
   
-  /// Gray10 - ¿¬ÇÑ È¸»ö (#E4E4E4)
+  /// Gray10 - ì—°í•œ íšŒìƒ‰ (#E4E4E4)
   static const Color gray10 = Color(0xFFE4E4E4);
   
-  /// Gray20 - ¹àÀº È¸»ö (#D4D3D3)
+  /// Gray20 - ë°ì€ íšŒìƒ‰ (#D4D3D3)
   static const Color gray20 = Color(0xFFD4D3D3);
   
-  /// Gray30 - Áß°£ ¹à±â È¸»ö (#C7C7C7)
+  /// Gray30 - ì¤‘ê°„ ë°ê¸° íšŒìƒ‰ (#C7C7C7)
   static const Color gray30 = Color(0xFFC7C7C7);
   
-  /// Gray40 - Áß°£ È¸»ö (#ABABAB)
+  /// Gray40 - ì¤‘ê°„ íšŒìƒ‰ (#ABABAB)
   static const Color gray40 = Color(0xFFABABAB);
   
-  /// Gray50 - Áß°£ ¾îµÎ¿î È¸»ö (#919191)
+  /// Gray50 - ì¤‘ê°„ ì–´ë‘ìš´ íšŒìƒ‰ (#919191)
   static const Color gray50 = Color(0xFF919191);
   
-  /// Gray60 - ¾îµÎ¿î È¸»ö (#777777)
+  /// Gray60 - ì–´ë‘ìš´ íšŒìƒ‰ (#777777)
   static const Color gray60 = Color(0xFF777777);
   
-  /// Gray70 - ÁøÇÑ È¸»ö (#5F5F5F)
+  /// Gray70 - ì§„í•œ íšŒìƒ‰ (#5F5F5F)
   static const Color gray70 = Color(0xFF5F5F5F);
   
-  /// Gray80 - ¸Å¿ì ¾îµÎ¿î È¸»ö (#333333)
+  /// Gray80 - ë§¤ìš° ì–´ë‘ìš´ íšŒìƒ‰ (#333333)
   static const Color gray80 = Color(0xFF333333);
   
-  /// Gray90 - °ÅÀÇ °ËÀº»ö (#1C1C1C)
+  /// Gray90 - ê±°ì˜ ê²€ì€ìƒ‰ (#1C1C1C)
   static const Color gray90 = Color(0xFF1C1C1C);
   
-  /// Black - ¼ø°ËÁ¤»ö (#000000)
+  /// Black - ìˆœê²€ì •ìƒ‰ (#000000)
   static const Color black = Color(0xFF000000);
 
   // ============================================================================
-  // Red »ö»ó ÆÈ·¹Æ® (¿¡·¯ »ö»ó)
+  // Red ìƒ‰ìƒ íŒ”ë ˆíŠ¸ (ì—ëŸ¬ ìƒ‰ìƒ)
   // ============================================================================
   
-  /// Red05 - °¡Àå ¿¬ÇÑ »¡°£»ö (#FDD7DC)
+  /// Red05 - ê°€ì¥ ì—°í•œ ë¹¨ê°„ìƒ‰ (#FDD7DC)
   static const Color red05 = Color(0xFFFDD7DC);
   
-  /// Red10 - ¿¬ÇÑ »¡°£»ö (#F797A4)
+  /// Red10 - ì—°í•œ ë¹¨ê°„ìƒ‰ (#F797A4)
   static const Color red10 = Color(0xFFF797A4);
   
-  /// Red20 - ¹àÀº »¡°£»ö (#F4677A)
+  /// Red20 - ë°ì€ ë¹¨ê°„ìƒ‰ (#F4677A)
   static const Color red20 = Color(0xFFF4677A);
   
-  /// Red30 - ¿¡·¯ »ö»ó (#F03851)
+  /// Red30 - ì—ëŸ¬ ìƒ‰ìƒ (#F03851)
   static const Color red30 = Color(0xFFF03851);
   
-  /// Red40 - ÁøÇÑ »¡°£»ö (#E4112E)
+  /// Red40 - ì§„í•œ ë¹¨ê°„ìƒ‰ (#E4112E)
   static const Color red40 = Color(0xFFE4112E);
   
-  /// Red50 - ¾îµÎ¿î »¡°£»ö (#B40E24)
+  /// Red50 - ì–´ë‘ìš´ ë¹¨ê°„ìƒ‰ (#B40E24)
   static const Color red50 = Color(0xFFB40E24);
   
-  /// Red60 - °¡Àå ¾îµÎ¿î »¡°£»ö (#850A1B)
+  /// Red60 - ê°€ì¥ ì–´ë‘ìš´ ë¹¨ê°„ìƒ‰ (#850A1B)
   static const Color red60 = Color(0xFF850A1B);
 
   // ============================================================================
-  // Green »ö»ó ÆÈ·¹Æ® (¼º°ø »ö»ó)
+  // Green ìƒ‰ìƒ íŒ”ë ˆíŠ¸ (ì„±ê³µ ìƒ‰ìƒ)
   // ============================================================================
   
-  /// Green05 - °¡Àå ¿¬ÇÑ ÃÊ·Ï»ö (#D3F3E0)
+  /// Green05 - ê°€ì¥ ì—°í•œ ì´ˆë¡ìƒ‰ (#D3F3E0)
   static const Color green05 = Color(0xFFD3F3E0);
   
-  /// Green10 - ¿¬ÇÑ ÃÊ·Ï»ö (#92E6B9)
+  /// Green10 - ì—°í•œ ì´ˆë¡ìƒ‰ (#92E6B9)
   static const Color green10 = Color(0xFF92E6B9);
   
-  /// Green20 - ¹àÀº ÃÊ·Ï»ö (#15D66F)
+  /// Green20 - ë°ì€ ì´ˆë¡ìƒ‰ (#15D66F)
   static const Color green20 = Color(0xFF15D66F);
   
-  /// Green30 - ¼º°ø »ö»ó (#12B75F)
+  /// Green30 - ì„±ê³µ ìƒ‰ìƒ (#12B75F)
   static const Color green30 = Color(0xFF12B75F);
   
-  /// Green40 - ÁøÇÑ ÃÊ·Ï»ö (#109C51)
+  /// Green40 - ì§„í•œ ì´ˆë¡ìƒ‰ (#109C51)
   static const Color green40 = Color(0xFF109C51);
   
-  /// Green50 - ¾îµÎ¿î ÃÊ·Ï»ö (#0E723C)
+  /// Green50 - ì–´ë‘ìš´ ì´ˆë¡ìƒ‰ (#0E723C)
   static const Color green50 = Color(0xFF0E723C);
   
-  /// Green60 - °¡Àå ¾îµÎ¿î ÃÊ·Ï»ö (#084424)
+  /// Green60 - ê°€ì¥ ì–´ë‘ìš´ ì´ˆë¡ìƒ‰ (#084424)
   static const Color green60 = Color(0xFF084424);
 
   // ============================================================================
-  // Yellow »ö»ó ÆÈ·¹Æ® (°æ°í »ö»ó)
+  // Yellow ìƒ‰ìƒ íŒ”ë ˆíŠ¸ (ê²½ê³  ìƒ‰ìƒ)
   // ============================================================================
   
-  /// Yellow05 - °¡Àå ¿¬ÇÑ ³ë¶õ»ö (#FFE499)
+  /// Yellow05 - ê°€ì¥ ì—°í•œ ë…¸ë€ìƒ‰ (#FFE499)
   static const Color yellow05 = Color(0xFFFFE499);
   
-  /// Yellow10 - ¿¬ÇÑ ³ë¶õ»ö (#FFD666)
+  /// Yellow10 - ì—°í•œ ë…¸ë€ìƒ‰ (#FFD666)
   static const Color yellow10 = Color(0xFFFFD666);
   
-  /// Yellow20 - ¹àÀº ³ë¶õ»ö (#FFC933)
+  /// Yellow20 - ë°ì€ ë…¸ë€ìƒ‰ (#FFC933)
   static const Color yellow20 = Color(0xFFFFC933);
   
-  /// Yellow30 - Áß°£ ³ë¶õ»ö (#FFB300)
+  /// Yellow30 - ì¤‘ê°„ ë…¸ë€ìƒ‰ (#FFB300)
   static const Color yellow30 = Color(0xFFFFB300);
   
-  /// Yellow40 - ÁøÇÑ ³ë¶õ»ö (#EBA500)
+  /// Yellow40 - ì§„í•œ ë…¸ë€ìƒ‰ (#EBA500)
   static const Color yellow40 = Color(0xFFEBA500);
   
-  /// Yellow50 - ¾îµÎ¿î ³ë¶õ»ö (#D69600)
+  /// Yellow50 - ì–´ë‘ìš´ ë…¸ë€ìƒ‰ (#D69600)
   static const Color yellow50 = Color(0xFFD69600);
   
-  /// Yellow60 - °¡Àå ¾îµÎ¿î ³ë¶õ»ö (#B27D00)
+  /// Yellow60 - ê°€ì¥ ì–´ë‘ìš´ ë…¸ë€ìƒ‰ (#B27D00)
   static const Color yellow60 = Color(0xFFB27D00);
 
   // ============================================================================
-  // Cool Gray »ö»ó ÆÈ·¹Æ®
+  // Cool Gray ìƒ‰ìƒ íŒ”ë ˆíŠ¸
   // ============================================================================
   
-  /// CoolGray01 - °¡Àå ¿¬ÇÑ Äğ ±×·¹ÀÌ (#F8F8FA)
+  /// CoolGray01 - ê°€ì¥ ì—°í•œ ì¿¨ ê·¸ë ˆì´ (#F8F8FA)
   static const Color coolGray01 = Color(0xFFF8F8FA);
   
-  /// CoolGray05 - ¿¬ÇÑ Äğ ±×·¹ÀÌ (#F6F6F9)
+  /// CoolGray05 - ì—°í•œ ì¿¨ ê·¸ë ˆì´ (#F6F6F9)
   static const Color coolGray05 = Color(0xFFF6F6F9);
   
-  /// CoolGray10 - ¹àÀº Äğ ±×·¹ÀÌ (#EDEEF2)
+  /// CoolGray10 - ë°ì€ ì¿¨ ê·¸ë ˆì´ (#EDEEF2)
   static const Color coolGray10 = Color(0xFFEDEEF2);
   
-  /// CoolGray20 - Áß°£ ¹à±â Äğ ±×·¹ÀÌ (#DDDFE5)
+  /// CoolGray20 - ì¤‘ê°„ ë°ê¸° ì¿¨ ê·¸ë ˆì´ (#DDDFE5)
   static const Color coolGray20 = Color(0xFFDDDFE5);
   
-  /// CoolGray30 - Áß°£ Äğ ±×·¹ÀÌ (#D2D4DD)
+  /// CoolGray30 - ì¤‘ê°„ ì¿¨ ê·¸ë ˆì´ (#D2D4DD)
   static const Color coolGray30 = Color(0xFFD2D4DD);
   
-  /// CoolGray40 - Áß°£ ¾îµÎ¿î Äğ ±×·¹ÀÌ (#C7C9D5)
+  /// CoolGray40 - ì¤‘ê°„ ì–´ë‘ìš´ ì¿¨ ê·¸ë ˆì´ (#C7C9D5)
   static const Color coolGray40 = Color(0xFFC7C9D5);
   
-  /// CoolGray50 - ¾îµÎ¿î Äğ ±×·¹ÀÌ (#BBBECD)
+  /// CoolGray50 - ì–´ë‘ìš´ ì¿¨ ê·¸ë ˆì´ (#BBBECD)
   static const Color coolGray50 = Color(0xFFBBBECD);
   
-  /// CoolGray60 - °¡Àå ¾îµÎ¿î Äğ ±×·¹ÀÌ (#B0B3C4)
+  /// CoolGray60 - ê°€ì¥ ì–´ë‘ìš´ ì¿¨ ê·¸ë ˆì´ (#B0B3C4)
   static const Color coolGray60 = Color(0xFFB0B3C4);
 
 
   // ============================================================================
-  // ±×¶óµ¥ÀÌ¼Ç
+  // ê·¸ë¼ë°ì´ì…˜
   // ============================================================================
   
-  /// Primary Gradient - ÁÖ¿ä ±×¶óµ¥ÀÌ¼Ç
+  /// Primary Gradient - ì£¼ìš” ê·¸ë¼ë°ì´ì…˜
   static const LinearGradient primaryGradient = LinearGradient(
     colors: [blue40, Color(0xFF92EAF5)],
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,
   );
   
-  /// Skeleton Gradient - ½ºÄÌ·¹Åæ ·Îµù¿ë ±×¶óµ¥ÀÌ¼Ç
+  /// Skeleton Gradient - ìŠ¤ì¼ˆë ˆí†¤ ë¡œë”©ìš© ê·¸ë¼ë°ì´ì…˜
   static const LinearGradient skeletonGradient = LinearGradient(
     colors: [
-      Color(0x00FFFFFF), // Åõ¸í
-      Color(0x99FFFFFF), // ¹İÅõ¸í Èò»ö
-      Color(0x00FFFFFF), // Åõ¸í
+      Color(0x00FFFFFF), // íˆ¬ëª…
+      Color(0x99FFFFFF), // ë°˜íˆ¬ëª… í°ìƒ‰
+      Color(0x00FFFFFF), // íˆ¬ëª…
     ],
     stops: [0.0, 0.5, 1.0],
     begin: Alignment.centerLeft,

@@ -1,38 +1,38 @@
-/// °¨Á¤(emotion) enum Á¤ÀÇ
-/// È­¸é¿¡¼­ »ç¿ëÇÒ °¨Á¤ µ¥ÀÌÅÍ¸¦ °ü¸®ÇÕ´Ï´Ù.
+/// ê°ì •(emotion) enum ì •ì˜
+/// í™”ë©´ì—ì„œ ì‚¬ìš©í•  ê°ì • ë°ì´í„°ë¥¼ ê´€ë¦¬í•©ë‹ˆë‹¤.
 enum Emotion {
-  /// Çàº¹ÇÑ °¨Á¤
+  /// í–‰ë³µí•œ ê°ì •
   happy,
   
-  /// ½½ÇÂ °¨Á¤
+  /// ìŠ¬í”ˆ ê°ì •
   sad,
   
-  /// È­³­ °¨Á¤
+  /// í™”ë‚œ ê°ì •
   angry,
   
-  /// ³î¶õ °¨Á¤
+  /// ë†€ë€ ê°ì •
   surprise,
   
-  /// ±âÅ¸ °¨Á¤
+  /// ê¸°íƒ€ ê°ì •
   etc;
 
-  /// È­¸é¿¡ Ç¥½ÃµÉ ÅØ½ºÆ®¸¦ ¹İÈ¯ÇÕ´Ï´Ù.
+  /// í™”ë©´ì— í‘œì‹œë  í…ìŠ¤íŠ¸ë¥¼ ë°˜í™˜í•©ë‹ˆë‹¤.
   String get displayText {
     switch (this) {
       case Emotion.happy:
-        return "Çàº¹ÇØ¿ä";
+        return "í–‰ë³µí•´ìš”";
       case Emotion.sad:
-        return "½½ÆÛ¿ä";
+        return "ìŠ¬í¼ìš”";
       case Emotion.angry:
-        return "È­³ª¿ä";
+        return "í™”ë‚˜ìš”";
       case Emotion.surprise:
-        return "³î¶ú¾î¿ä";
+        return "ë†€ëì–´ìš”";
       case Emotion.etc:
-        return "±âÅ¸";
+        return "ê¸°íƒ€";
     }
   }
 
-  /// Áß°£ Å©±â ÀÌ¹ÌÁö °æ·Î¸¦ ¹İÈ¯ÇÕ´Ï´Ù.
+  /// ì¤‘ê°„ í¬ê¸° ì´ë¯¸ì§€ ê²½ë¡œë¥¼ ë°˜í™˜í•©ë‹ˆë‹¤.
   String get mediumImagePath {
     switch (this) {
       case Emotion.happy:
@@ -48,7 +48,7 @@ enum Emotion {
     }
   }
 
-  /// ÀÛÀº Å©±â ÀÌ¹ÌÁö °æ·Î¸¦ ¹İÈ¯ÇÕ´Ï´Ù.
+  /// ì‘ì€ í¬ê¸° ì´ë¯¸ì§€ ê²½ë¡œë¥¼ ë°˜í™˜í•©ë‹ˆë‹¤.
   String get smallImagePath {
     switch (this) {
       case Emotion.happy:
@@ -64,7 +64,7 @@ enum Emotion {
     }
   }
 
-  /// °¨Á¤º° »ö»ó ÄÚµå¸¦ ¹İÈ¯ÇÕ´Ï´Ù.
+  /// ê°ì •ë³„ ìƒ‰ìƒ ì½”ë“œë¥¼ ë°˜í™˜í•©ë‹ˆë‹¤.
   String get colorCode {
     switch (this) {
       case Emotion.happy:
@@ -80,10 +80,10 @@ enum Emotion {
     }
   }
 
-  /// ¸ğµç °¨Á¤ ¸ñ·ÏÀ» ¹İÈ¯ÇÕ´Ï´Ù.
+  /// ëª¨ë“  ê°ì • ëª©ë¡ì„ ë°˜í™˜í•©ë‹ˆë‹¤.
   static List<Emotion> get allEmotions => Emotion.values;
 
-  /// °¨Á¤ ÀÌ¸§À¸·Î enumÀ» Ã£½À´Ï´Ù.
+  /// ê°ì • ì´ë¦„ìœ¼ë¡œ enumì„ ì°¾ìŠµë‹ˆë‹¤.
   static Emotion? fromString(String name) {
     try {
       return Emotion.values.firstWhere(

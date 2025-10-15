@@ -1,8 +1,17 @@
-'터미널 한글깨짐'
+vscode or cursor : file 인코딩 자체를 utf8로 저장해야지 EUC-KR로 저장시 app에서 한글깨짐!!
+
+Cursor 설정 열기: Ctrl + ,
+검색창에 "encoding" 입력
+utf8로 변경
+
+***
+
+'터미널 한글깨짐' : 이거하면 visual studio에서 한글깨지니 웬만하면 하지말기.
 
 제어판\시계 및 국가\국가 또는 지역
 
 관리자옵션 -> 시스템 로캘 변경 -> Beta:세계 언어 지원을 위해 unicode utf-8사용
+
 
 *****
 

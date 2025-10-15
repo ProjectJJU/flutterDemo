@@ -1,18 +1,18 @@
-/// URL °æ·Î »ó¼ö ¹× ¶ó¿ìÆÃ °ü¸®
-/// ´ÙÀÌ³ª¹Í ¶ó¿ìÆÃÀ» Áö¿øÇÏ¸ç, °¢ °æ·Îº° »ó¼¼ Á¤º¸¸¦ °ü¸®ÇÕ´Ï´Ù.
+/// URL ê²½ë¡œ ìƒìˆ˜ ë° ë¼ìš°íŒ… ê´€ë¦¬
+/// ë‹¤ì´ë‚˜ë¯¹ ë¼ìš°íŒ…ì„ ì§€ì›í•˜ë©°, ê° ê²½ë¡œë³„ ìƒì„¸ ì •ë³´ë¥¼ ê´€ë¦¬í•©ë‹ˆë‹¤.
 class AppUrls {
-  // ÀÎÁõ °ü·Ã °æ·Î
+  // ì¸ì¦ ê´€ë ¨ ê²½ë¡œ
   static const String login = '/auth/login';
   static const String signup = '/auth/signup';
   
-  // ÀÏ±â °ü·Ã °æ·Î
+  // ì¼ê¸° ê´€ë ¨ ê²½ë¡œ
   static const String diaries = '/diaries';
   static const String diaryDetail = '/diaries/:id';
   
-  // »çÁø °ü·Ã °æ·Î
+  // ì‚¬ì§„ ê´€ë ¨ ê²½ë¡œ
   static const String pictures = '/pictures';
   
-  /// URL °æ·Îº° »ó¼¼ Á¤º¸¸¦ °ü¸®ÇÏ´Â ¸Ê
+  /// URL ê²½ë¡œë³„ ìƒì„¸ ì •ë³´ë¥¼ ê´€ë¦¬í•˜ëŠ” ë§µ
   static const Map<String, UrlInfo> urlInfo = {
     login: UrlInfo(
       path: login,
@@ -66,7 +66,7 @@ class AppUrls {
     ),
   };
   
-  /// ´ÙÀÌ³ª¹Í ¶ó¿ìÆÃÀ» À§ÇÑ °æ·Î »ı¼º
+  /// ë‹¤ì´ë‚˜ë¯¹ ë¼ìš°íŒ…ì„ ìœ„í•œ ê²½ë¡œ ìƒì„±
   static String generatePath(String basePath, {Map<String, String>? params}) {
     String path = basePath;
     
@@ -79,25 +79,25 @@ class AppUrls {
     return path;
   }
   
-  /// ÀÏ±â »ó¼¼ ÆäÀÌÁö °æ·Î »ı¼º
+  /// ì¼ê¸° ìƒì„¸ í˜ì´ì§€ ê²½ë¡œ ìƒì„±
   static String diaryDetailPath(String id) {
     return generatePath(diaryDetail, params: {'id': id});
   }
   
-  /// °æ·Î°¡ À¯È¿ÇÑÁö È®ÀÎ
+  /// ê²½ë¡œê°€ ìœ íš¨í•œì§€ í™•ì¸
   static bool isValidPath(String path) {
     return urlInfo.containsKey(path) || 
            (path.startsWith('/diaries/') && path != '/diaries');
   }
   
-  /// °æ·Î Á¤º¸ Á¶È¸
+  /// ê²½ë¡œ ì •ë³´ ì¡°íšŒ
   static UrlInfo? getUrlInfo(String path) {
-    // Á¤È®ÇÑ °æ·Î ¸ÅÄ¡
+    // ì •í™•í•œ ê²½ë¡œ ë§¤ì¹˜
     if (urlInfo.containsKey(path)) {
       return urlInfo[path];
     }
     
-    // ´ÙÀÌ³ª¹Í °æ·Î ¸ÅÄ¡ (ÀÏ±â »ó¼¼ ÆäÀÌÁö)
+    // ë‹¤ì´ë‚˜ë¯¹ ê²½ë¡œ ë§¤ì¹˜ (ì¼ê¸° ìƒì„¸ í˜ì´ì§€)
     if (path.startsWith('/diaries/') && path != '/diaries') {
       return urlInfo[diaryDetail];
     }
@@ -105,7 +105,7 @@ class AppUrls {
     return null;
   }
   
-  /// Á¢±Ù °¡´ÉÇÑ °æ·ÎÀÎÁö È®ÀÎ
+  /// ì ‘ê·¼ ê°€ëŠ¥í•œ ê²½ë¡œì¸ì§€ í™•ì¸
   static bool isAccessible(String path, {bool isMember = false}) {
     final info = getUrlInfo(path);
     if (info == null) return false;
@@ -114,12 +114,12 @@ class AppUrls {
            (info.accessLevel == AccessLevel.memberOnly && isMember);
   }
   
-  /// ¸ğµç °æ·Î ¸ñ·ÏÀ» ¹İÈ¯ÇÕ´Ï´Ù.
+  /// ëª¨ë“  ê²½ë¡œ ëª©ë¡ì„ ë°˜í™˜í•©ë‹ˆë‹¤.
   static List<String> getAllPaths() {
     return urlInfo.keys.toList();
   }
   
-  /// Æ¯Á¤ Á¢±Ù ·¹º§ÀÇ °æ·Î ¸ñ·ÏÀ» ¹İÈ¯ÇÕ´Ï´Ù.
+  /// íŠ¹ì • ì ‘ê·¼ ë ˆë²¨ì˜ ê²½ë¡œ ëª©ë¡ì„ ë°˜í™˜í•©ë‹ˆë‹¤.
   static List<String> getPathsByAccessLevel(AccessLevel level) {
     return urlInfo.entries
         .where((entry) => entry.value.accessLevel == level)
@@ -128,39 +128,39 @@ class AppUrls {
   }
 }
 
-/// Á¢±Ù ·¹º§ ¿­°ÅÇü
+/// ì ‘ê·¼ ë ˆë²¨ ì—´ê±°í˜•
 enum AccessLevel {
-  /// ´©±¸³ª Á¢±Ù °¡´É
+  /// ëˆ„êµ¬ë‚˜ ì ‘ê·¼ ê°€ëŠ¥
   everyone,
   
-  /// È¸¿ø¸¸ Á¢±Ù °¡´É
+  /// íšŒì›ë§Œ ì ‘ê·¼ ê°€ëŠ¥
   memberOnly,
 }
 
-/// URL Á¤º¸ Å¬·¡½º
+/// URL ì •ë³´ í´ë˜ìŠ¤
 class UrlInfo {
-  /// °æ·Î
+  /// ê²½ë¡œ
   final String path;
   
-  /// Á¢±Ù °¡´É »óÅÂ
+  /// ì ‘ê·¼ ê°€ëŠ¥ ìƒíƒœ
   final AccessLevel accessLevel;
   
-  /// Çì´õ Ç¥½Ã ¿©ºÎ
+  /// í—¤ë” í‘œì‹œ ì—¬ë¶€
   final bool showHeader;
   
-  /// ·Î°í Ç¥½Ã ¿©ºÎ
+  /// ë¡œê³  í‘œì‹œ ì—¬ë¶€
   final bool showLogo;
   
-  /// ´ÙÅ©¸ğµå ÀüÈ¯ Åä±Û Ç¥½Ã ¿©ºÎ
+  /// ë‹¤í¬ëª¨ë“œ ì „í™˜ í† ê¸€ í‘œì‹œ ì—¬ë¶€
   final bool showDarkModeToggle;
   
-  /// ¹è³Ê Ç¥½Ã ¿©ºÎ
+  /// ë°°ë„ˆ í‘œì‹œ ì—¬ë¶€
   final bool showBanner;
   
-  /// ³×ºñ°ÔÀÌ¼Ç Ç¥½Ã ¿©ºÎ
+  /// ë„¤ë¹„ê²Œì´ì…˜ í‘œì‹œ ì—¬ë¶€
   final bool showNavigation;
   
-  /// ÇªÅÍ Ç¥½Ã ¿©ºÎ
+  /// í‘¸í„° í‘œì‹œ ì—¬ë¶€
   final bool showFooter;
   
   const UrlInfo({
@@ -174,27 +174,27 @@ class UrlInfo {
     required this.showFooter,
   });
   
-  /// Á¢±Ù °¡´ÉÇÑÁö È®ÀÎÇÕ´Ï´Ù.
+  /// ì ‘ê·¼ ê°€ëŠ¥í•œì§€ í™•ì¸í•©ë‹ˆë‹¤.
   bool isAccessible({bool isMember = false}) {
     return accessLevel == AccessLevel.everyone || 
            (accessLevel == AccessLevel.memberOnly && isMember);
   }
   
-  /// Çì´õ°¡ ÇÊ¿äÇÑÁö È®ÀÎÇÕ´Ï´Ù.
+  /// í—¤ë”ê°€ í•„ìš”í•œì§€ í™•ì¸í•©ë‹ˆë‹¤.
   bool get needsHeader => showHeader;
   
-  /// ·Î°í°¡ ÇÊ¿äÇÑÁö È®ÀÎÇÕ´Ï´Ù.
+  /// ë¡œê³ ê°€ í•„ìš”í•œì§€ í™•ì¸í•©ë‹ˆë‹¤.
   bool get needsLogo => showLogo;
   
-  /// ´ÙÅ©¸ğµå Åä±ÛÀÌ ÇÊ¿äÇÑÁö È®ÀÎÇÕ´Ï´Ù.
+  /// ë‹¤í¬ëª¨ë“œ í† ê¸€ì´ í•„ìš”í•œì§€ í™•ì¸í•©ë‹ˆë‹¤.
   bool get needsDarkModeToggle => showDarkModeToggle;
   
-  /// ¹è³Ê°¡ ÇÊ¿äÇÑÁö È®ÀÎÇÕ´Ï´Ù.
+  /// ë°°ë„ˆê°€ í•„ìš”í•œì§€ í™•ì¸í•©ë‹ˆë‹¤.
   bool get needsBanner => showBanner;
   
-  /// ³×ºñ°ÔÀÌ¼ÇÀÌ ÇÊ¿äÇÑÁö È®ÀÎÇÕ´Ï´Ù.
+  /// ë„¤ë¹„ê²Œì´ì…˜ì´ í•„ìš”í•œì§€ í™•ì¸í•©ë‹ˆë‹¤.
   bool get needsNavigation => showNavigation;
   
-  /// ÇªÅÍ°¡ ÇÊ¿äÇÑÁö È®ÀÎÇÕ´Ï´Ù.
+  /// í‘¸í„°ê°€ í•„ìš”í•œì§€ í™•ì¸í•©ë‹ˆë‹¤.
   bool get needsFooter => showFooter;
 }

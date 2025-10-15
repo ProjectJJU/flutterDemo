@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-/// ÇÇ±×¸¶ ÆÄ¿îµ¥ÀÌ¼Ç ±â¹İ Àü¿ª ÅØ½ºÆ® ½ºÅ¸ÀÏ Ã¼°è
+/// í”¼ê·¸ë§ˆ íŒŒìš´ë°ì´ì…˜ ê¸°ë°˜ ì „ì—­ í…ìŠ¤íŠ¸ ìŠ¤íƒ€ì¼ ì²´ê³„
 /// 
-/// ÇÇ±×¸¶ ¿øº» ÅØ½ºÆ® ½ºÅ¸ÀÏ¸¸À¸·Î ±¸¼ºµÈ abstract class
-/// ¸ğ¹ÙÀÏ/µ¥½ºÅ©Åé ºĞ±â ¹× ´Ù±¹¾î Áö¿øÀ» À§ÇÑ ±¸Á¶
+/// í”¼ê·¸ë§ˆ ì›ë³¸ í…ìŠ¤íŠ¸ ìŠ¤íƒ€ì¼ë§Œìœ¼ë¡œ êµ¬ì„±ëœ abstract class
+/// ëª¨ë°”ì¼/ë°ìŠ¤í¬í†± ë¶„ê¸° ë° ë‹¤êµ­ì–´ ì§€ì›ì„ ìœ„í•œ êµ¬ì¡°
 abstract class TextStyles {
   // ============================================================================
-  // Web Headline (À¥ Çìµå¶óÀÎ) - µ¥½ºÅ©Åé¿ë ´ëÇü Çìµå¶óÀÎ
+  // Web Headline (ì›¹ í—¤ë“œë¼ì¸) - ë°ìŠ¤í¬í†±ìš© ëŒ€í˜• í—¤ë“œë¼ì¸
   // ============================================================================
   
-  /// À¥ Çìµå¶óÀÎ01 - Pretendard SemiBold, 48px, line-height 60px
+  /// ì›¹ í—¤ë“œë¼ì¸01 - Pretendard SemiBold, 48px, line-height 60px
   static const TextStyle webHeadline01 = TextStyle(
     fontFamily: 'Pretendard',
     fontWeight: FontWeight.w600, // SemiBold
@@ -18,7 +18,7 @@ abstract class TextStyles {
     letterSpacing: 0.0,
   );
 
-  /// À¥ Çìµå¶óÀÎ02 - Pretendard SemiBold, 36px, line-height 48px
+  /// ì›¹ í—¤ë“œë¼ì¸02 - Pretendard SemiBold, 36px, line-height 48px
   static const TextStyle webHeadline02 = TextStyle(
     fontFamily: 'Pretendard',
     fontWeight: FontWeight.w600, // SemiBold
@@ -27,7 +27,7 @@ abstract class TextStyles {
     letterSpacing: 0.0,
   );
 
-  /// À¥ Çìµå¶óÀÎ03 - Pretendard SemiBold, 28px, line-height 36px
+  /// ì›¹ í—¤ë“œë¼ì¸03 - Pretendard SemiBold, 28px, line-height 36px
   static const TextStyle webHeadline03 = TextStyle(
     fontFamily: 'Pretendard',
     fontWeight: FontWeight.w600, // SemiBold
@@ -37,10 +37,10 @@ abstract class TextStyles {
   );
 
   // ============================================================================
-  // Headline (Çìµå¶óÀÎ) - ¸ğ¹ÙÀÏ¿ë Çìµå¶óÀÎ
+  // Headline (í—¤ë“œë¼ì¸) - ëª¨ë°”ì¼ìš© í—¤ë“œë¼ì¸
   // ============================================================================
   
-  /// Çìµå¶óÀÎ01 - Pretendard Bold, 24px, line-height 32px
+  /// í—¤ë“œë¼ì¸01 - Pretendard Bold, 24px, line-height 32px
   static const TextStyle headline01 = TextStyle(
     fontFamily: 'Pretendard',
     fontWeight: FontWeight.w700, // Bold
@@ -49,7 +49,7 @@ abstract class TextStyles {
     letterSpacing: 0.0,
   );
 
-  /// Çìµå¶óÀÎ02 - Pretendard ExtraBold, 22px, line-height 30px
+  /// í—¤ë“œë¼ì¸02 - Pretendard ExtraBold, 22px, line-height 30px
   static const TextStyle headline02 = TextStyle(
     fontFamily: 'Pretendard',
     fontWeight: FontWeight.w800, // ExtraBold
@@ -58,7 +58,7 @@ abstract class TextStyles {
     letterSpacing: 0.0,
   );
 
-  /// Çìµå¶óÀÎ03 - Pretendard Bold, 20px, line-height 28px
+  /// í—¤ë“œë¼ì¸03 - Pretendard Bold, 20px, line-height 28px
   static const TextStyle headline03 = TextStyle(
     fontFamily: 'Pretendard',
     fontWeight: FontWeight.w700, // Bold
@@ -68,10 +68,10 @@ abstract class TextStyles {
   );
 
   // ============================================================================
-  // Title (Å¸ÀÌÆ²) - ¼½¼Ç Á¦¸ñ
+  // Title (íƒ€ì´í‹€) - ì„¹ì…˜ ì œëª©
   // ============================================================================
   
-  /// Å¸ÀÌÆ²01 - Pretendard Bold, 18px, line-height 24px
+  /// íƒ€ì´í‹€01 - Pretendard Bold, 18px, line-height 24px
   static const TextStyle title01 = TextStyle(
     fontFamily: 'Pretendard',
     fontWeight: FontWeight.w700, // Bold
@@ -80,7 +80,7 @@ abstract class TextStyles {
     letterSpacing: 0.0,
   );
 
-  /// Å¸ÀÌÆ²02 - Pretendard Bold, 16px, line-height 22px
+  /// íƒ€ì´í‹€02 - Pretendard Bold, 16px, line-height 22px
   static const TextStyle title02 = TextStyle(
     fontFamily: 'Pretendard',
     fontWeight: FontWeight.w700, // Bold
@@ -89,7 +89,7 @@ abstract class TextStyles {
     letterSpacing: 0.0,
   );
 
-  /// Å¸ÀÌÆ²03 - Pretendard Bold, 14px, line-height 20px
+  /// íƒ€ì´í‹€03 - Pretendard Bold, 14px, line-height 20px
   static const TextStyle title03 = TextStyle(
     fontFamily: 'Pretendard',
     fontWeight: FontWeight.w700, // Bold
@@ -98,7 +98,7 @@ abstract class TextStyles {
     letterSpacing: 0.0,
   );
 
-  /// ¼­ºê Å¸ÀÌÆ²01 - Pretendard SemiBold, 14px, line-height 22px
+  /// ì„œë¸Œ íƒ€ì´í‹€01 - Pretendard SemiBold, 14px, line-height 22px
   static const TextStyle subtitle01 = TextStyle(
     fontFamily: 'Pretendard',
     fontWeight: FontWeight.w600, // SemiBold
@@ -107,7 +107,7 @@ abstract class TextStyles {
     letterSpacing: 0.0,
   );
 
-  /// ¼­ºê Å¸ÀÌÆ²02 - Pretendard SemiBold, 12px, line-height 18px
+  /// ì„œë¸Œ íƒ€ì´í‹€02 - Pretendard SemiBold, 12px, line-height 18px
   static const TextStyle subtitle02 = TextStyle(
     fontFamily: 'Pretendard',
     fontWeight: FontWeight.w600, // SemiBold
@@ -117,10 +117,10 @@ abstract class TextStyles {
   );
 
   // ============================================================================
-  // Body (º»¹®) - ÀÏ¹İ ÅØ½ºÆ®
+  // Body (ë³¸ë¬¸) - ì¼ë°˜ í…ìŠ¤íŠ¸
   // ============================================================================
   
-  /// º»¹®01 - Pretendard Medium, 16px, line-height 24px
+  /// ë³¸ë¬¸01 - Pretendard Medium, 16px, line-height 24px
   static const TextStyle body01 = TextStyle(
     fontFamily: 'Pretendard',
     fontWeight: FontWeight.w500, // Medium
@@ -129,7 +129,7 @@ abstract class TextStyles {
     letterSpacing: 0.0,
   );
 
-  /// º»¹®02_m - Pretendard Medium, 14px, line-height 22px
+  /// ë³¸ë¬¸02_m - Pretendard Medium, 14px, line-height 22px
   static const TextStyle body02Medium = TextStyle(
     fontFamily: 'Pretendard',
     fontWeight: FontWeight.w500, // Medium
@@ -138,7 +138,7 @@ abstract class TextStyles {
     letterSpacing: 0.0,
   );
 
-  /// º»¹®03 - Pretendard Medium, 12px, line-height 18px
+  /// ë³¸ë¬¸03 - Pretendard Medium, 12px, line-height 18px
   static const TextStyle body03 = TextStyle(
     fontFamily: 'Pretendard',
     fontWeight: FontWeight.w500, // Medium
@@ -147,7 +147,7 @@ abstract class TextStyles {
     letterSpacing: 0.0,
   );
 
-  /// º»¹®01 (¹ÌÁ¤) - Pretendard Regular, 16px, line-height 24px
+  /// ë³¸ë¬¸01 (ë¯¸ì •) - Pretendard Regular, 16px, line-height 24px
   static const TextStyle body01Regular = TextStyle(
     fontFamily: 'Pretendard',
     fontWeight: FontWeight.w400, // Regular
@@ -156,7 +156,7 @@ abstract class TextStyles {
     letterSpacing: 0.0,
   );
 
-  /// º»¹®02_s - Pretendard Regular, 14px, line-height 20px
+  /// ë³¸ë¬¸02_s - Pretendard Regular, 14px, line-height 20px
   static const TextStyle body02Small = TextStyle(
     fontFamily: 'Pretendard',
     fontWeight: FontWeight.w400, // Regular
@@ -165,7 +165,7 @@ abstract class TextStyles {
     letterSpacing: 0.0,
   );
 
-  /// º»¹®03 (¹ÌÁ¤) - Pretendard Regular, 12px, line-height 18px
+  /// ë³¸ë¬¸03 (ë¯¸ì •) - Pretendard Regular, 12px, line-height 18px
   static const TextStyle body03Regular = TextStyle(
     fontFamily: 'Pretendard',
     fontWeight: FontWeight.w400, // Regular
@@ -175,10 +175,10 @@ abstract class TextStyles {
   );
 
   // ============================================================================
-  // Caption (Ä¸¼Ç) - ÀÛÀº ÅØ½ºÆ®, ¶óº§
+  // Caption (ìº¡ì…˜) - ì‘ì€ í…ìŠ¤íŠ¸, ë¼ë²¨
   // ============================================================================
   
-  /// Ä¸¼Ç01 - Pretendard SemiBold, 12px, line-height 14px
+  /// ìº¡ì…˜01 - Pretendard SemiBold, 12px, line-height 14px
   static const TextStyle caption01 = TextStyle(
     fontFamily: 'Pretendard',
     fontWeight: FontWeight.w600, // SemiBold
@@ -187,7 +187,7 @@ abstract class TextStyles {
     letterSpacing: 0.0,
   );
 
-  /// Ä¸¼Ç02_m - Pretendard SemiBold, 10px, line-height 12px
+  /// ìº¡ì…˜02_m - Pretendard SemiBold, 10px, line-height 12px
   static const TextStyle caption02Medium = TextStyle(
     fontFamily: 'Pretendard',
     fontWeight: FontWeight.w600, // SemiBold
@@ -196,7 +196,7 @@ abstract class TextStyles {
     letterSpacing: 0.0,
   );
 
-  /// Ä¸¼Ç02_s - Pretendard Medium, 10px, line-height 12px
+  /// ìº¡ì…˜02_s - Pretendard Medium, 10px, line-height 12px
   static const TextStyle caption02Small = TextStyle(
     fontFamily: 'Pretendard',
     fontWeight: FontWeight.w500, // Medium
@@ -205,7 +205,7 @@ abstract class TextStyles {
     letterSpacing: 0.0,
   );
 
-  /// Ä¸¼Ç03 - Pretendard SemiBold, 8px, line-height 12px
+  /// ìº¡ì…˜03 - Pretendard SemiBold, 8px, line-height 12px
   static const TextStyle caption03 = TextStyle(
     fontFamily: 'Pretendard',
     fontWeight: FontWeight.w600, // SemiBold
@@ -215,11 +215,11 @@ abstract class TextStyles {
   );
 
   // ============================================================================
-  // ÇÃ·§Æûº° ºĞ±â ¸Ş¼­µå (ÇâÈÄ È®Àå¿ë)
+  // í”Œë«í¼ë³„ ë¶„ê¸° ë©”ì„œë“œ (í–¥í›„ í™•ì¥ìš©)
   // ============================================================================
   
-  /// ¸ğ¹ÙÀÏ/µ¥½ºÅ©Åé ºĞ±â¸¦ À§ÇÑ ÇïÆÛ ¸Ş¼­µå
-  /// ÇöÀç´Â ±âº» ½ºÅ¸ÀÏÀ» ¹İÈ¯ÇÏÁö¸¸, ÇâÈÄ ÇÃ·§Æûº° ´Ù¸¥ ½ºÅ¸ÀÏ Àû¿ë °¡´É
+  /// ëª¨ë°”ì¼/ë°ìŠ¤í¬í†± ë¶„ê¸°ë¥¼ ìœ„í•œ í—¬í¼ ë©”ì„œë“œ
+  /// í˜„ì¬ëŠ” ê¸°ë³¸ ìŠ¤íƒ€ì¼ì„ ë°˜í™˜í•˜ì§€ë§Œ, í–¥í›„ í”Œë«í¼ë³„ ë‹¤ë¥¸ ìŠ¤íƒ€ì¼ ì ìš© ê°€ëŠ¥
   static TextStyle getWebHeadline01({bool isDesktop = false}) {
     return isDesktop ? webHeadline01 : webHeadline01;
   }
@@ -241,22 +241,22 @@ abstract class TextStyles {
   }
 
   // ============================================================================
-  // ´Ù±¹¾î Áö¿øÀ» À§ÇÑ ÇïÆÛ ¸Ş¼­µå (ÇâÈÄ È®Àå¿ë)
+  // ë‹¤êµ­ì–´ ì§€ì›ì„ ìœ„í•œ í—¬í¼ ë©”ì„œë“œ (í–¥í›„ í™•ì¥ìš©)
   // ============================================================================
   
-  /// ¾ğ¾îº° ÆùÆ® ÆĞ¹Ğ¸® ¼³Á¤ (ÇâÈÄ ¿µ¹® typography Áö¿ø¿ë)
+  /// ì–¸ì–´ë³„ í°íŠ¸ íŒ¨ë°€ë¦¬ ì„¤ì • (í–¥í›„ ì˜ë¬¸ typography ì§€ì›ìš©)
   static String getFontFamily({String language = 'ko'}) {
     switch (language) {
       case 'ko':
         return 'Pretendard';
       case 'en':
-        return 'Pretendard'; // ÇâÈÄ ¿µ¹® Àü¿ë ÆùÆ®·Î º¯°æ °¡´É
+        return 'Pretendard'; // í–¥í›„ ì˜ë¬¸ ì „ìš© í°íŠ¸ë¡œ ë³€ê²½ ê°€ëŠ¥
       default:
         return 'Pretendard';
     }
   }
 
-  /// ¾ğ¾îº° ½ºÅ¸ÀÏ Àû¿ë ÇïÆÛ
+  /// ì–¸ì–´ë³„ ìŠ¤íƒ€ì¼ ì ìš© í—¬í¼
   static TextStyle applyLanguageStyle(TextStyle baseStyle, {String language = 'ko'}) {
     return baseStyle.copyWith(
       fontFamily: getFontFamily(language: language),

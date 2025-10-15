@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'commons/providers/modal/modal.provider.dart';
+import 'commons/constants/text_styles.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -20,7 +21,11 @@ class _MainScreenState extends State<MainScreen> {
           modalProvider: _modalProvider,
           child: Scaffold(
             appBar: AppBar(
-              title: const Text('Main Screen'),
+              title: Text('Main',
+                                style: TextStyles.body01.copyWith(
+                color: Colors.black,
+              ),             
+              ),
               backgroundColor: Colors.blue,
               foregroundColor: Colors.white,
             ),
@@ -28,41 +33,44 @@ class _MainScreenState extends State<MainScreen> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text(
+                  Text(
                     'Hello World',
-                    style: TextStyle(
-                      fontSize: 32,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.blue,
-                    ),
+                    style: TextStyles.body01.copyWith(
+                color: Colors.black,
+              ),
                   ),
                   const SizedBox(height: 20),
                   ElevatedButton(
                     onPressed: () {
                       _modalProvider.openModal(
-                        title: 'Å×½ºÆ® ¸ğ´Ş',
-                        content: const Padding(
+                        title: 'í…ŒìŠ¤íŠ¸ ëª¨ë‹¬',                        
+                        content: Padding(
                           padding: EdgeInsets.all(16),
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               Text(
-                                '¸ğ´Ş Å×½ºÆ®',
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                                'ëª¨ë‹¬ í…ŒìŠ¤íŠ¸',
+                                style: TextStyles.body01.copyWith(
+                color: Colors.black,
+              ),
                               ),
                               SizedBox(height: 10),
-                              Text('ÀÌ°ÍÀº ¸ğ´Ş ÄÜÅÙÃ÷ÀÔ´Ï´Ù.'),
+                              Text('ì´ê²ƒì€ ëª¨ë‹¬ ì½˜í…ì¸ ì…ë‹ˆë‹¤.',style: TextStyles.body01.copyWith(
+                color: Colors.black,
+              )),
                               SizedBox(height: 10),
-                              Text('³»¿ë Å©±â¿¡ ¸Â°Ô Ç¥½ÃµË´Ï´Ù.'),
+                              Text('ë‚´ìš© í¬ê¸°ì— ë§ê²Œ í‘œì‹œë©ë‹ˆë‹¤.',style: TextStyles.body01.copyWith(
+                color: Colors.black,
+              )),
                             ],
                           ),
                         ),
                       );
                     },
-                    child: const Text('¸ğ´Ş ¿­±â'),
+                    child: Text('ëª¨ë‹¬ ì—´ê¸°',style: TextStyles.body01.copyWith(
+                color: Colors.black,
+              )),
                   ),
                 ],
               ),
